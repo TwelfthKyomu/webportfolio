@@ -1,0 +1,19 @@
+body {
+	background-color: theme(bg, primary);
+	color: theme(text, primary);
+
+	@include font-nunito;
+}
+
+a {
+	color: theme(text, link);
+
+	&:hover {
+		color: theme(state, hover, brand);
+	}
+}
+
+::selection {
+	background-color: theme(brand, primary);
+	color: theme(text, inverse);
+}

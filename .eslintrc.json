@@ -24,15 +24,15 @@
         "react",
         "import",
         "jsx-a11y",
-        "security",
         "promise"
     ],
     "rules": {
-        "no-multiple-empty-lines": ["error", { "max": 0, "maxEOF": 0, "maxBOF": 0 }],
+        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "max-len": ["warn", { "code": 100 }],
+        "no-trailing-spaces": ["error", { "skipBlankLines": false, "ignoreComments": false }],
         "no-console": "warn",
         "import/no-unresolved": "error",
         "import/no-cycle": "error",
@@ -46,6 +46,16 @@
         ],
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
+        "react/jsx-newline": ["error", { "prevent": true }],
+        "react/jsx-first-prop-new-line": ["error", "multiline"],
+        "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "multiline" }],
+        "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
+        "padding-line-between-statements": [
+            "warn",
+            { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+            { "blankLine": "always", "prev": "*", "next": "return" },
+            { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] }
+        ],
         "react/jsx-no-bind": "warn",
         "react/jsx-key": "error",
         "react/jsx-curly-brace-presence": ["error", "never"],
@@ -58,6 +68,10 @@
             "version": "detect"
         },
         "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true,
+                "project": "./tsconfig.json"
+            },
             "node": {
                 "extensions": [".js", ".jsx", ".ts", ".tsx"]
             }

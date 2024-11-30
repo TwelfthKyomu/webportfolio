@@ -1,0 +1,28 @@
+.header__nav {
+	display: flex;
+	gap: d-vw(8);
+	padding-block: d-vw(8);
+	justify-content: center;
+
+	a {
+		padding: d-vw(8) d-vw(16);
+		text-transform: uppercase;
+
+		&::after {
+			display: block;
+			content: '';
+			height: 1px;
+			width: 100%;
+			background: theme(state, hover, brand);
+			transform: scaleX(0);
+			transform-origin: right;
+
+			@include animate(transform, normal);
+		}
+
+		&:hover::after{
+			transform-origin: left;
+			transform: scaleX(1);
+		}
+	}
+}

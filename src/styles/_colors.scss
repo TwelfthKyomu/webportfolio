@@ -1,0 +1,150 @@
+// Theme Colors
+$theme: (
+  // Backgrounds
+  bg: (
+    primary: #0A0A0B,    // Основной фон
+    secondary: #121214,   // Вторичный фон
+    tertiary: #18181B,    // Третичный фон
+    elevated: #1E1E21,    // Приподнятые элементы
+    card: #27272A,        // Карточки
+    modal: #2D2D30,       // Модальные окна
+    tooltip: #333336,     // Тултипы
+  ),
+
+  // Text Colors
+  text: (
+    primary: #FFFFFF,     // Основной текст
+    secondary: #A1A1AA,   // Вторичный текст
+    tertiary: #71717A,    // Дополнительный текст
+    disabled: #52525B,    // Отключенный текст
+    inverse: #18181B,     // Инвертированный текст
+    link: #818CF8,        // Ссылки
+    code: #E879F9,        // Код
+  ),
+
+  // Brand Colors
+  brand: (
+    primary: #818CF8,     // Основной брендовый цвет
+    secondary: #C084FC,   // Вторичный брендовый цвет
+    accent: #F472B6,      // Акцентный цвет
+    highlight: #34D399,   // Выделение
+    warning: #FBBF24,     // Предупреждение
+    error: #FB7185,       // Ошибка
+    success: #34D399,     // Успех
+  ),
+
+  // Border Colors
+  border: (
+    light: rgba(255, 255, 255, 0.1),
+    medium: rgba(255, 255, 255, 0.15),
+    strong: rgba(255, 255, 255, 0.2),
+    focus: #818CF8,
+  ),
+
+  // Interactive States
+  state: (
+    hover: (
+      bg: #27272A,
+      text: #FFFFFF,
+      brand: #6366F1,
+      border: rgba(255, 255, 255, 0.2)
+    ),
+    active: (
+      bg: #2D2D30,
+      text: #FFFFFF,
+      brand: #4F46E5,
+      border: rgba(255, 255, 255, 0.25)
+    ),
+    focus: (
+      ring: rgba(129, 140, 248, 0.5),
+      border: #818CF8
+    ),
+    disabled: (
+      bg: #27272A,
+      text: #52525B,
+      border: rgba(255, 255, 255, 0.1)
+    )
+  ),
+
+  // Overlay Colors
+  overlay: (
+    light: rgba(0, 0, 0, 0.3),
+    medium: rgba(0, 0, 0, 0.5),
+    heavy: rgba(0, 0, 0, 0.7),
+    blur: rgba(0, 0, 0, 0.8)
+  ),
+
+  // Shadows
+  shadow: (
+    sm: '0 1px 2px rgba(0, 0, 0, 0.3)',
+    md: '0 4px 6px rgba(0, 0, 0, 0.4)',
+    lg: '0 10px 15px rgba(0, 0, 0, 0.5)',
+    xl: '0 20px 25px rgba(0, 0, 0, 0.6)'
+  ),
+
+  // Gradients
+  gradient: (
+    primary: linear-gradient(135deg, #818CF8 0%, #C084FC 100%),
+    secondary: linear-gradient(135deg, #F472B6 0%, #FB7185 100%),
+    dark: linear-gradient(180deg, #0A0A0B 0%, #18181B 100%)
+  ),
+
+  // Special Effects
+  effects: (
+    glass: rgba(24, 24, 27, 0.7),
+    glass-border: rgba(255, 255, 255, 0.1),
+    backdrop-blur: blur(8px)
+  )
+);
+
+// Function to access theme colors
+@function theme($category, $key, $subKey: null) {
+  @if $subKey {
+    @return map-get(map-get(map-get($theme, $category), $key), $subKey);
+  } @else {
+    @return map-get(map-get($theme, $category), $key);
+  }
+}
+
+/* Официально используемые Apple цвета */
+$gray: #8E8E93;
+$gray2: #AEAEB2;
+$gray3: #C7C7CC;
+$gray4: #D1D1D6;
+$gray5: #E5E5EA;
+$gray6: #F2F2F7;
+
+$system-background: #FFFFFF;
+$system-background-dark: #000000;
+$system-gray: #8E8E93;
+$system-label: #000000;
+$system-label-dark: #FFFFFF;
+$system-secondary-label: #3C3C43;
+$system-secondary-label-dark: #EBEBF5;
+
+/* Используются Apple, но не подтверждены официально */
+$blue: #06c; // Синий для кнопок и ссылок на сайте
+$text-primary: #1d1d1f; // Основной текстовый цвет
+$text-secondary: #86868b; // Вторичный текст
+$text-light: #f5f5f7; // Светлый текст
+$bg-primary: #ffffff; // Белый фон
+$bg-secondary: #f5f5f7; // Светло-серый фон
+$bg-dark: #000000; // Чёрный фон
+
+/* Скорее всего, не используются Apple официально */
+$dark-blue: #147ce5;
+$light-blue: #2997ff;
+$accent-red: #fa233b;
+$accent-green: #68cc45;
+$accent-gray: #86868b;
+$nav-background: rgba(0, 0, 0, 0.8);
+$nav-text: #f5f5f7;
+$footer-background: #f5f5f7;
+$footer-text: #6e6e73;
+$border-light: #d2d2d7;
+$border-dark: #424245;
+$overlay-dark: rgba(0, 0, 0, 0.4);
+$overlay-light: rgba(255, 255, 255, 0.7);
+$hover-light: rgba(0, 0, 0, 0.04);
+$hover-dark: rgba(255, 255, 255, 0.1);
+
