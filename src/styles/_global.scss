@@ -13,6 +13,26 @@ a {
 	}
 }
 
+h1 {
+    @include h1;
+}
+
+h2 {
+    @include h2;
+}
+
+h3 {
+    @include h3;
+}
+
+h4 {
+    @include h4;
+}
+
+h5 {
+    @include body-large;
+}
+
 ::selection {
 	background-color: theme(brand, primary);
 	color: theme(text, inverse);

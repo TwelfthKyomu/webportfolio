@@ -1,14 +1,11 @@
-import Image from "next/image";
-import React, { FC } from "react";
+import React from "react";
 
-import profileAvatar from 'assets/avatar.jpeg';
+import Profile from "@/components/profile";
 
-const Main:FC = () => {
-	return(
-		<div className="profile-avatar">
-			<Image src={profileAvatar} alt="" />
-		</div>
-	)
-}
+const Main: React.FC = () => {
+	return (
+		<Profile />
+	);
+};
 
 export default Main;

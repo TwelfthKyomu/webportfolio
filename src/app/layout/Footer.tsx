@@ -11,11 +11,11 @@ const Footer: React.FC = () => {
           <a href="https://github.com" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            LinkedIn
+          <a href="https://vk.com/dannis12" target="_blank" rel="noopener noreferrer">
+            VK
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            Twitter
+          <a href="https://t.me/dannistwelfth" target="_blank" rel="noopener noreferrer">
+            Telegram
           </a>
         </div>
       </div>

@@ -1,0 +1,15 @@
+.footer {
+	width: fit-content;
+	margin: auto;
+	text-align: center;
+}
+
+.footer__copyright {
+	user-select: none;
+}
+
+.footer__social {
+	display: flex;
+	justify-content: center;
+	gap: d-vw(8);
+}

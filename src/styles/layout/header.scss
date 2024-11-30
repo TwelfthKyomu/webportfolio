@@ -1,3 +1,7 @@
+.header {
+    margin-bottom: d-vw(40);
+}
+
 .header__nav {
 	display: flex;
 	gap: d-vw(8);
@@ -20,9 +24,19 @@
 			@include animate(transform, normal);
 		}
 
-		&:hover::after{
+		&:hover::after {
 			transform-origin: left;
 			transform: scaleX(1);
 		}
+
+        &.active {
+            pointer-events: none;
+            color: theme(state, active, brand);
+
+            &::after {
+                background: theme(state, active, brand);
+                transform: scaleX(1);
+            }
+        }
 	}
 }
