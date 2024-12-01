@@ -26,8 +26,8 @@ const Profile: FC = () => {
             </div>
             <div className="profile__info">
                 <h1>Паутов Даниил</h1>
-                <h5>&#171;Twelfth&#187;</h5>
-                <h3>Frontend Developer</h3>
+                <h3>&#171;Twelfth&#187;</h3>
+                <h2>Frontend Developer</h2>
             </div>
             <div className="profile__stats">
                 { stats.map((stat, index) => (

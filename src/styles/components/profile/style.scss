@@ -66,6 +66,18 @@
     flex-direction: column;
     gap: d-vw(4);
     height: fit-content;
+
+    h1 {
+        @include h2;
+    }
+
+    h2 {
+        @include h4;
+    }
+
+    h3 {
+        @include body-small;
+    }
 }
 
 .profile__stats {

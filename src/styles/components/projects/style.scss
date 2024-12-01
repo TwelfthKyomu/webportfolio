@@ -69,6 +69,10 @@
         position: relative;
         color: theme(text, secondary);
 
+        span {
+            @include body;
+        }
+
         &::after {
             content: '';
             display: block;
