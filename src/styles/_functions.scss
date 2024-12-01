@@ -12,35 +12,15 @@ $mobile-width: 414;
   @return #{($px / $mobile-width) * 100}vw;
 }
 
-// Миксин для адаптивного значения с px в vw
-@mixin adaptive-value($property, $px-value) {
-  #{$property}: $px-value + px;
-
-  @media (min-width: 768px) {
-    #{$property}: d-vw($px-value);
-  }
-
-  @media (max-width: 767px) {
-    #{$property}: m-vw($px-value);
-  }
-}
-
 // Функция для конвертации px в rem
 @function to-rem($px) {
-  $base-font-size: 16;
-  @return #{$px / $base-font-size}rem;
+    $base-font-size: 16;
+    @return #{$px / $base-font-size}rem;
 }
 
-@mixin fluid-value($property, $min-px, $max-px) {
-  #{$property}: $min-px + px;
-
-  @media (min-width: 375px) {
-    #{$property}: calc(#{$min-px}px + (#{$max-px} - #{$min-px}) * ((100vw - 375px) / (#{$desktop-width} - 375)));
-  }
-
-  @media (min-width: #{$desktop-width}px) {
-    #{$property}: $max-px + px;
-  }
+// Функция получения значения анимации
+@function anim($category, $key) {
+    @return map-get(map-get($animations, $category), $key);
 }
 
 // Карта базовых настроек анимации
@@ -65,9 +45,29 @@ $animations: (
   )
 );
 
-// Функция получения значения анимации
-@function anim($category, $key) {
-  @return map-get(map-get($animations, $category), $key);
+// Миксин для адаптивного значения с px в vw
+@mixin adaptive-value($property, $px-value) {
+    #{$property}: $px-value + px;
+
+    @media (min-width: 768px) {
+        #{$property}: d-vw($px-value);
+    }
+
+    @media (max-width: 767px) {
+        #{$property}: m-vw($px-value);
+    }
+}
+
+@mixin fluid-value($property, $min-px, $max-px) {
+    #{$property}: $min-px + px;
+
+    @media (min-width: 375px) {
+        #{$property}: calc(#{$min-px}px + (#{$max-px} - #{$min-px}) * ((100vw - 375px) / (#{$desktop-width} - 375)));
+    }
+
+    @media (min-width: #{$desktop-width}px) {
+        #{$property}: $max-px + px;
+    }
 }
 
 // Миксин для базовой анимации
@@ -147,4 +147,10 @@ $animations: (
     opacity: 1;
     transform: scale(1);
   }
+}
+
+@mixin mobile {
+    @media (max-width: 767px) {
+        @content;
+    }
 }
