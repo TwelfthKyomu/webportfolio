@@ -19,7 +19,7 @@ const Profile: FC = () => {
         <section className="profile">
             <div className="profile__avatar">
                 <Image
-                    src={profileAvatar}
+                    src={ profileAvatar }
                     alt="avatar"
                     priority
                 />
@@ -30,13 +30,13 @@ const Profile: FC = () => {
                 <h3>Frontend Developer</h3>
             </div>
             <div className="profile__stats">
-                {stats.map((stat, index) => (
+                { stats.map((stat, index) => (
                     <ProfileStat
-                        key={index}
-                        count={stat.count}
-                        label={stat.label}
+                        key={ index }
+                        count={ stat.count }
+                        label={ stat.label }
                     />
-                ))}
+                )) }
             </div>
         </section>
     );
