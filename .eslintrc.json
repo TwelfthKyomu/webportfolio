@@ -31,7 +31,7 @@
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        "max-len": ["warn", { "code": 100 }],
+        "max-len": ["warn", { "code": 120 }],
         "no-trailing-spaces": ["error", { "skipBlankLines": false, "ignoreComments": false }],
         "no-console": "warn",
         "import/no-unresolved": "error",

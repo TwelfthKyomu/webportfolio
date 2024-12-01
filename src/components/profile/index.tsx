@@ -1,16 +1,19 @@
+'use client'
 import Image from "next/image";
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 
 import ProfileStat from "@/components/profile/profileStats";
+import { useGithub } from "@/context/github";
 import profileAvatar from 'assets/avatar.jpeg';
 
 const Profile: FC = () => {
+    const { repositories } = useGithub();
 
-    const stats = [
-	    { count: 2, label: "Коммерческих проектов" },
-	    { count: 2, label: "Доработок" },
-        { count: 5, label: "Своих проектов" }
-    ];
+    const stats = useMemo(() => [
+        { count: 2, label: "Коммерческих проектов" },
+        { count: 2, label: "Доработок" },
+        { count: repositories.length, label: "Своих проектов" }
+    ], [repositories.length]);
 
     return (
         <section className="profile">
