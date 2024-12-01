@@ -126,13 +126,6 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Better text selection */
-::selection {
-  background-color: #b3d4fc;
-  color: #000;
-  text-shadow: none;
-}
-
 /* Remove outline for non-keyboard focus */
 :focus:not(:focus-visible) {
   outline: none;

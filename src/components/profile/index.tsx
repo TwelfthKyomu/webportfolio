@@ -1,10 +1,10 @@
 import Image from "next/image";
-import React from "react";
+import React, { FC } from "react";
 
 import ProfileStat from "@/components/profile/profileStats";
 import profileAvatar from 'assets/avatar.jpeg';
 
-const Profile: React.FC = () => {
+const Profile: FC = () => {
 
     const stats = [
 	    { count: 2, label: "Коммерческих проектов" },

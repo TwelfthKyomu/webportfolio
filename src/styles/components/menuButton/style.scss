@@ -1,0 +1,33 @@
+.menu__list {
+    display: flex;
+    justify-content: center;
+
+    li {
+        padding: d-vw(4) d-vw(12);
+        cursor: pointer;
+        color: theme(text, secondary);
+
+        &::after {
+            user-select: none;
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+
+        &.active {
+            pointer-events: none;
+            color: theme(text, primary);
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}
