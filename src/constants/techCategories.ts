@@ -47,16 +47,18 @@ export const techCategories = {
 
 export type TechCategory = keyof typeof techCategories;
 
-export function categorizeTechnology(tech: string | null | undefined): TechCategory | null {
-    if (!tech) return null;
-
-    const lowercaseTech = tech.toLowerCase();
-
-    for (const [category, technologies] of Object.entries(techCategories)) {
-        if (technologies.some(t => lowercaseTech.includes(t))) {
-            return category as TechCategory;
-        }
-    }
-
-    return null;
-}
+export const ignoredDependencies = [
+	'@types',
+	'eslint',
+	'prettier',
+	'husky',
+	'lint',
+	'config',
+	'tsconfig',
+	'types',
+	'devDependencies',
+	'webpack',
+	'babel',
+	'package',
+	'nodemon'
+];
