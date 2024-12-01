@@ -1,4 +1,4 @@
-import { TechCategory } from "@/utils/techCategories";
+import { TechCategory } from "@/constants/techCategories";
 
 export interface GithubRepository {
     id: number;
@@ -37,3 +37,9 @@ export type GithubState = {
     error: string | null;
     fetchRepositories: () => Promise<void>;
 }
+
+export type GithubContextType = {
+	repositories: GithubRepository[];
+	isLoading: boolean;
+	error: string | null;
+};

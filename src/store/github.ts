@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 import { isValidRepository } from "@/lib/validation";
 import { GithubRepository, GithubState, PackageJson } from '@/types/github';
-import { categorizeTechnology, TechCategory } from '@/utils/techCategories';
+import { categorizeTechnology, TechCategory } from '@/constants/techCategories';
 
 const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 const GITHUB_API_BASE = 'https://api.github.com';

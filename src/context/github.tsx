@@ -2,18 +2,12 @@
 import { createContext, ReactNode, useContext, useEffect } from 'react';
 
 import { useGithubStore } from '@/store/github';
-import { GithubRepository } from '@/types/github';
-
-type GithubContextType = {
-    repositories: GithubRepository[];
-    isLoading: boolean;
-    error: string | null;
-};
+import { GithubContextType } from "@/types/github";
 
 const GithubContext = createContext<GithubContextType>({
-    repositories: [],
-    isLoading: false,
-    error: null,
+	repositories: [],
+	isLoading: false,
+	error: null,
 });
 
 export const GithubProvider = ({ children }: { children: ReactNode }) => {

@@ -13,6 +13,8 @@
 		padding: d-vw(8) d-vw(16);
 		text-transform: uppercase;
 
+        @include h4;
+
 		&::after {
 			display: block;
 			content: '';

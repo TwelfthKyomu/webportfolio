@@ -31,7 +31,7 @@ const Projects: FC = () => {
     return (
         <div className="projects">
             { visibleProjects.map(repo => (
-                <article key={ repo.id } className="project">
+                <div key={ repo.id } className="project">
                     <h1 className="project__title">{ repo.name }</h1>
                     { repo.html_url && (
                         <Link className="project__link" target="_blank" href={ repo.html_url }>
@@ -55,7 +55,7 @@ const Projects: FC = () => {
                             )) }
                     </ul>
                     <Image src={ DefaultImage } alt={ repo.name } className="project__image" priority/>
-                </article>
+                </div>
             )) }
         </div>
     );

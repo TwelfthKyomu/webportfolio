@@ -14,6 +14,8 @@
     color: theme(text, secondary);
     padding: d-vw(4) d-vw(12);
 
+    @include body-large;
+
     &::after {
         user-select: none;
         content: '';
