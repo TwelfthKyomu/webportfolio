@@ -5,11 +5,14 @@ const Footer: React.FC = () => {
 		<footer className="footer">
 			<div className="footer__content">
 				<div className="footer__copyright">
-					<p>&copy; {new Date().getFullYear()} Twelfth. All rights reserved.</p>
+					<p>&copy; {new Date().getFullYear()}</p>
 				</div>
 				<div className="footer__social">
-					<a href="https://github.com/TwelfthDannis" target="_blank"
-					   rel="noopener noreferrer">
+					<a
+						href="https://github.com/TwelfthDannis"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						GitHub
 					</a>
 					<a href="https://vk.com/dannis12" target="_blank" rel="noopener noreferrer">

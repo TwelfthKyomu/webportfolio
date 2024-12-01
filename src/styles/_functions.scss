@@ -4,12 +4,12 @@ $mobile-width: 414;
 
 // Функция для конвертации px в vw для десктопа
 @function d-vw($px) {
-  @return #{($px / $desktop-width) * 100}vw;
+    @return #{($px / $desktop-width) * 100}vw;
 }
 
 // Функция для конвертации px в vw для мобильных устройств
 @function m-vw($px) {
-  @return #{($px / $mobile-width) * 100}vw;
+    @return #{($px / $mobile-width) * 100}vw;
 }
 
 // Функция для конвертации px в rem
@@ -25,24 +25,24 @@ $mobile-width: 414;
 
 // Карта базовых настроек анимации
 $animations: (
-  duration: (
-    fast: 200ms,
-    base: 300ms,
-    slow: 500ms,
-    slower: 700ms
-  ),
-  timing: (
-    ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1),
-    ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1),
-    ease-in-out: cubic-bezier(0.4, 0, 0.2, 1),
-    bounce: cubic-bezier(0.87, -0.41, 0.19, 1.44)
-  ),
-  delay: (
-    none: 0ms,
-    short: 100ms,
-    base: 200ms,
-    long: 300ms
-  )
+    duration: (
+        fast: 200ms,
+        base: 300ms,
+        slow: 500ms,
+        slower: 700ms
+    ),
+    timing: (
+        ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1),
+        ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1),
+        ease-in-out: cubic-bezier(0.4, 0, 0.2, 1),
+        bounce: cubic-bezier(0.87, -0.41, 0.19, 1.44)
+    ),
+    delay: (
+        none: 0ms,
+        short: 100ms,
+        base: 200ms,
+        long: 300ms
+    )
 );
 
 // Миксин для адаптивного значения с px в vw
@@ -72,81 +72,81 @@ $animations: (
 
 // Миксин для базовой анимации
 @mixin animate($properties...) {
-  $duration: anim(duration, base);
-  $timing: anim(timing, ease-out-expo);
-  $delay: anim(delay, none);
+    $duration: anim(duration, base);
+    $timing: anim(timing, ease-out-expo);
+    $delay: anim(delay, none);
 
-  transition-property: $properties;
-  transition-duration: $duration;
-  transition-timing-function: $timing;
-  transition-delay: $delay;
+    transition-property: $properties;
+    transition-duration: $duration;
+    transition-timing-function: $timing;
+    transition-delay: $delay;
 }
 
 // Миксин для кастомной анимации
 @mixin animate-custom($properties, $duration: base, $timing: ease-out-expo, $delay: none) {
-  transition-property: $properties;
-  transition-duration: anim(duration, $duration);
-  transition-timing-function: anim(timing, $timing);
-  transition-delay: anim(delay, $delay);
+    transition-property: $properties;
+    transition-duration: anim(duration, $duration);
+    transition-timing-function: anim(timing, $timing);
+    transition-delay: anim(delay, $delay);
 }
 
 // Миксин для группы анимаций
 @mixin animate-group($items...) {
-  @each $item in $items {
-    $property: nth($item, 1);
-    $duration: if(length($item) > 1, nth($item, 2), base);
-    $timing: if(length($item) > 2, nth($item, 3), ease-out-expo);
-    $delay: if(length($item) > 3, nth($item, 4), none);
+    @each $item in $items {
+        $property: nth($item, 1);
+        $duration: if(length($item) > 1, nth($item, 2), base);
+        $timing: if(length($item) > 2, nth($item, 3), ease-out-expo);
+        $delay: if(length($item) > 3, nth($item, 4), none);
 
-    transition-property: append(transition-property, $property, comma);
-    transition-duration: append(transition-duration, anim(duration, $duration), comma);
-    transition-timing-function: append(transition-timing-function, anim(timing, $timing), comma);
-    transition-delay: append(transition-delay, anim(delay, $delay), comma);
-  }
+        transition-property: append(transition-property, $property, comma);
+        transition-duration: append(transition-duration, anim(duration, $duration), comma);
+        transition-timing-function: append(transition-timing-function, anim(timing, $timing), comma);
+        transition-delay: append(transition-delay, anim(delay, $delay), comma);
+    }
 }
 
 // Миксин для появления элемента
 @mixin fade-in($duration: base, $timing: ease-out-expo, $delay: none) {
-  opacity: 0;
-  @include animate-custom(opacity, $duration, $timing, $delay);
+    opacity: 0;
+    @include animate-custom(opacity, $duration, $timing, $delay);
 
-  &.visible {
-    opacity: 1;
-  }
+    &.visible {
+        opacity: 1;
+    }
 }
 
 // Миксин для слайда
 @mixin slide-in($direction: 'up', $amount: 20px, $duration: base, $timing: ease-out-expo, $delay: none) {
-  opacity: 0;
+    opacity: 0;
 
-  @if $direction == 'up' {
-    transform: translateY($amount);
-  } @else if $direction == 'down' {
-    transform: translateY(-$amount);
-  } @else if $direction == 'left' {
-    transform: translateX($amount);
-  } @else if $direction == 'right' {
-    transform: translateX(-$amount);
-  }
+    @if $direction == 'up' {
+        transform: translateY($amount);
+    } @else if $direction == 'down' {
+        transform: translateY(-$amount);
+    } @else if $direction == 'left' {
+        transform: translateX($amount);
+    } @else if $direction == 'right' {
+        transform: translateX(-$amount);
+    }
 
-  @include animate-custom((transform, opacity), $duration, $timing, $delay);
+    @include animate-custom((transform, opacity), $duration, $timing, $delay);
 
-  &.visible {
-    opacity: 1;
-    transform: translate(0);
-  }
+    &.visible {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
 
 // Миксин для масштабирования
 @mixin scale-in($from: 0.95, $duration: base, $timing: ease-out-expo, $delay: none) {
-  opacity: 0;
-  transform: scale($from);
-  @include animate-custom((transform, opacity), $duration, $timing, $delay);
+    opacity: 0;
+    transform: scale($from);
+    @include animate-custom((transform, opacity), $duration, $timing, $delay);
 
-  &.visible {
-    opacity: 1;
-    transform: scale(1);
-  }
+    &.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @mixin mobile {

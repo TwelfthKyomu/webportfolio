@@ -2,12 +2,12 @@ import { FC } from "react";
 
 const MenuButton: FC = () => {
 	return (
-		<section className="menu-content">
+		<section className="menu">
 			<ul className="menu__list">
-				<li className="active">Все проекты</li>
-				<li>Мои проекты</li>
-				<li className="commercial-projects">Коммерческие проекты</li>
-				<li>Обновления</li>
+				<li className="menu__item menu__item--active">Все проекты</li>
+				<li className="menu__item">Мои проекты</li>
+				<li className="menu__item menu__item--commercial">Коммерческие проекты</li>
+				<li className="menu__item">Обновления</li>
 			</ul>
 		</section>
 	);
