@@ -3,6 +3,7 @@
 }
 
 .header__nav {
+    user-select: none;
 	display: flex;
 	gap: d-vw(8);
 	padding-block: d-vw(8);
