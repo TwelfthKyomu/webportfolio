@@ -19,13 +19,19 @@ const GithubContext = createContext<GithubContextType>({
 export const GithubProvider = ({ children }: { children: ReactNode }) => {
     const { repositories, isLoading, error, fetchRepositories } = useGithubStore();
 
-    useEffect(() => {
-        fetchRepositories();
-    }, [fetchRepositories]);
+	useEffect(() => {
+		if (repositories.length === 0) {
+			fetchRepositories()
+			.then(r => r)
+			.catch(err => globalThis.Error(err));
+		}
+
+		return () => {};
+	}, [fetchRepositories, repositories]);
 
     return (
-        <GithubContext.Provider value={{ repositories, isLoading, error }}>
-            {children}
+        <GithubContext.Provider value={ { repositories, isLoading, error } }>
+            { children }
         </GithubContext.Provider>
     );
 };

@@ -1,16 +1,27 @@
+'use client';
 import { FC } from "react";
 
+import { MenuItems } from "@/constants/menu";
+import { useFilter } from "@/context/filter";
+
 const MenuButton: FC = () => {
+	const {currentFilter, setFilter} = useFilter();
+
 	return (
 		<section className="menu">
 			<ul className="menu__list">
-				<li className="menu__item menu__item--active">Все проекты</li>
-				<li className="menu__item">Мои проекты</li>
-				<li className="menu__item menu__item--commercial">Коммерческие проекты</li>
-				<li className="menu__item">Обновления</li>
+				{ MenuItems.map((item, index) => (
+					<li
+						key={ index }
+						className={ `menu__item ${currentFilter === item.id ? 'menu__item--active' : ''}` }
+						onClick={ () => setFilter(item.id) }
+					>
+						{ item.label }
+					</li>
+				)) }
 			</ul>
 		</section>
 	);
-}
+};
 
 export default MenuButton;

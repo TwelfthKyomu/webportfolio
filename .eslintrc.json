@@ -32,9 +32,12 @@
         "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "max-len": ["warn", { "code": 120 }],
+        "promise/catch-or-return": "off",
         "react/jsx-curly-spacing": ["error", { "when": "always", "children": true }],
         "no-trailing-spaces": ["error", { "skipBlankLines": false, "ignoreComments": false }],
         "no-console": "warn",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
         "import/no-unresolved": "error",
         "import/no-cycle": "error",
         "import/order": [
@@ -57,7 +60,6 @@
             { "blankLine": "always", "prev": "*", "next": "return" },
             { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] }
         ],
-        "react/jsx-no-bind": "warn",
         "react/jsx-key": "error",
         "react/jsx-curly-brace-presence": ["error", "never"],
         "jsx-a11y/alt-text": "error",
