@@ -6,10 +6,14 @@
 
 .footer__copyright {
 	user-select: none;
+
+    @include caption;
 }
 
 .footer__social {
 	display: flex;
 	justify-content: center;
 	gap: d-vw(8);
+
+    @include body;
 }

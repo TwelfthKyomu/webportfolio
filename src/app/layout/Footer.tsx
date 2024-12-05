@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
 		<footer className="footer">
 			<div className="footer__content">
 				<div className="footer__copyright">
-					<p>&copy; {new Date().getFullYear()}</p>
+					<p>&copy; { new Date().getFullYear() } Twelfth</p>
 				</div>
 				<div className="footer__social">
 					<a

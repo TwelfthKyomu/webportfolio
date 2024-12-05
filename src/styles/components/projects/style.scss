@@ -69,6 +69,10 @@
         position: relative;
         color: theme(text, secondary);
 
+        span {
+            @include body;
+        }
+
         &::after {
             content: '';
             display: block;
@@ -99,12 +103,15 @@
     position: absolute;
     left: 0;
     opacity: 0;
+    overflow-y: scroll;
+    width: 100%;
     backdrop-filter: theme(effects, backdrop-blur);
     background: theme(overlay, medium);
     bottom: calc(100% + #{d-vw(8)});
     padding: d-vw(8);
     border-radius: d-vw(8);
     min-width: d-vw(120);
+    max-height: d-vw(180);
     transform: translateY(d-vw(8));
 
     @include animate-custom((opacity, transform), base);

@@ -16,3 +16,9 @@
 	transition-duration: $duration;
 	transition-timing-function: $timing;
 }
+
+@mixin mobile {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
