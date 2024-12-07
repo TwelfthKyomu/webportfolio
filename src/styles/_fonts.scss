@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
+
+// Переменные для шрифта
+$font-nunito: 'Nunito', sans-serif;
+
+// Миксин для быстрого применения шрифта
+@mixin font-nunito($weight: 400) {
+  font-family: $font-nunito;
+  font-weight: $weight;
+}
+
+// Карта весов шрифта
+$font-weights: (
+  'extralight': 200,
+  'light': 300,
+  'regular': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+  'extrabold': 800,
+  'black': 900
+);
+
+// Функция для получения веса шрифта
+@function font-weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+
+// Базовые текстовые стили
+%text-base {
+  font-family: $font-nunito;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Миксины для типографики
+@mixin h1 {
+  @extend %text-base;
+  font-weight: font-weight('bold');
+  font-size: d-vw(40);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+@mixin h2 {
+  @extend %text-base;
+  font-weight: font-weight('bold');
+  font-size: d-vw(32);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+@mixin h3 {
+  @extend %text-base;
+  font-weight: font-weight('semibold');
+  font-size: d-vw(24);
+  line-height: 1.3;
+}
+
+@mixin h4 {
+  @extend %text-base;
+  font-weight: font-weight('semibold');
+  font-size: d-vw(20);
+  line-height: 1.4;
+}
+
+@mixin body-large {
+  @extend %text-base;
+  font-weight: font-weight('regular');
+  font-size: d-vw(18);
+  line-height: 1.5;
+}
+
+@mixin body {
+  @extend %text-base;
+  font-weight: font-weight('regular');
+  font-size: d-vw(16);
+  line-height: 1.5;
+}
+
+@mixin body-small {
+  @extend %text-base;
+  font-weight: font-weight('regular');
+  font-size: d-vw(14);
+  line-height: 1.5;
+}
+
+@mixin caption {
+  @extend %text-base;
+  font-weight: font-weight('medium');
+  font-size: d-vw(12);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}

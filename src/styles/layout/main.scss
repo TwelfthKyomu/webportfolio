@@ -1,0 +1,57 @@
+@keyframes pulseOpacity {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.main {
+    position: relative;
+    margin-inline: auto;
+    //TODO: Выбрать фон
+    //background: linear-gradient(
+    //    135deg,
+    //    rgba(theme(brand, primary), 0.1),
+    //    rgba(theme(brand, secondary), 0.1)
+    //);
+    background: theme(bg, secondary);
+    backdrop-filter: theme(effects, backdrop-blur);
+    border: 1px solid theme(border, light);
+    width: d-vw(960);
+    padding: d-vw(16);
+    border-radius: d-vw(24);
+    margin-bottom: d-vw(36);
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        border-radius: 50%;
+        opacity: 0.5;
+        animation: pulseOpacity 4s ease-in-out infinite;
+        filter: blur(d-vw(80));
+    }
+
+    &::before {
+        background: theme(brand, primary);
+        width: d-vw(250);
+        height: d-vw(250);
+        top: d-vw(-75);
+        left: d-vw(-75);
+    }
+
+    &::after {
+        background: theme(brand, secondary);
+        animation-delay: -4s;
+        width: d-vw(150);
+        height: d-vw(150);
+        bottom: d-vw(-100);
+        right: d-vw(-100);
+    }
+}

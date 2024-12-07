@@ -1,0 +1,45 @@
+.header {
+    margin-bottom: d-vw(32);
+}
+
+.header__nav {
+    user-select: none;
+	display: flex;
+	gap: d-vw(8);
+	padding-block: d-vw(8);
+	justify-content: center;
+
+	a {
+		padding: d-vw(8) d-vw(16);
+		text-transform: uppercase;
+
+        @include body-small;
+
+		&::after {
+			display: block;
+			content: '';
+			height: 1px;
+			width: 100%;
+			background: currentColor;
+			transform: scaleX(0);
+			transform-origin: right;
+
+			@include animate(transform, normal);
+		}
+
+		&:hover::after {
+			transform-origin: left;
+			transform: scaleX(1);
+		}
+
+        &.active {
+            pointer-events: none;
+            color: theme(state, active, brand);
+
+            &::after {
+                background: currentColor;
+                transform: scaleX(1);
+            }
+        }
+	}
+}
