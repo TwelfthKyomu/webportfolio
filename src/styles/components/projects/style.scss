@@ -2,6 +2,7 @@
     display: grid;
     gap: d-vw(12);
     grid-template-columns: repeat(2, 1fr);
+	min-height: d-vw(240);
 }
 
 .project {
@@ -18,6 +19,7 @@
     border-radius: d-vw(12);
     min-height: d-vw(240);
     gap: d-vw(8);
+	opacity: 0;
 
     &:hover {
         img {
@@ -43,6 +45,26 @@
 
         @include animate-custom((filter, transform), base);
     }
+
+	@for $i from 0 through 4 {
+		&.project-#{$i} {
+			animation: animateProject 1s #{$i * 1}s forwards;
+		}
+	}
+}
+
+@keyframes animateProject {
+	0% {
+		scale: .5;
+	}
+	1% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 1;
+		scale: 1;
+	}
 }
 
 .project__title {

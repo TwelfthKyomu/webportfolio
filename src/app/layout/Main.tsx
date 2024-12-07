@@ -3,18 +3,19 @@ import React, { FC } from "react";
 import MenuButton from "@/components/MenuButton";
 import Profile from "@/components/profile";
 import Projects from "@/components/projects";
-import { FilterProvider } from "@/context/filter";
-import { GithubProvider } from "@/context/github";
+import { FilterProvider } from "@/context/FilterContext";
+import QueryProvider from "@/providers/QueryProvider";
 
 const Main: FC = () => {
+
 	return (
-		<GithubProvider>
+		<QueryProvider>
 			<Profile/>
 			<FilterProvider>
 				<MenuButton/>
-				<Projects />
+				<Projects/>
 			</FilterProvider>
-		</GithubProvider>
+		</QueryProvider>
 	);
 };
 

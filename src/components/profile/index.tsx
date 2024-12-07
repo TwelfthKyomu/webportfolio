@@ -3,17 +3,16 @@ import Image from "next/image";
 import React, { FC, useMemo } from "react";
 
 import ProfileStat from "@/components/profile/profileStats";
-import { useGithub } from "@/context/github";
 import profileAvatar from 'assets/avatar.jpeg';
 
 const Profile: FC = () => {
-    const { repositories } = useGithub();
+    // const { repositories } = useGithubContext();
 
-    const stats = useMemo(() => [
+   /* const stats = useMemo(() => [
         { count: 2, label: "Коммерческих проектов" },
         { count: 2, label: "Доработок" },
         { count: repositories.length, label: "Своих проектов" }
-    ], [repositories.length]);
+    ], [repositories.length]);*/
 
     return (
         <section className="profile">
@@ -29,7 +28,7 @@ const Profile: FC = () => {
                 <h3>&#171;Twelfth&#187;</h3>
                 <h2>Frontend Developer</h2>
             </div>
-            <div className="profile__stats">
+            { /*<div className="profile__stats">
                 { stats.map((stat, index) => (
                     <ProfileStat
                         key={ index }
@@ -37,7 +36,7 @@ const Profile: FC = () => {
                         label={ stat.label }
                     />
                 )) }
-            </div>
+            </div>*/ }
         </section>
     );
 };
