@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 import { MenuItems } from "@/constants/menu";
-import { useFilter } from "@/context/filter";
+import { useFilter } from "@/context/FilterContext";
 
 const MenuButton: FC = () => {
 	const {currentFilter, setFilter} = useFilter();

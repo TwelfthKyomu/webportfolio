@@ -18,7 +18,7 @@ export default function RootLayout({children}: {
 		<body>
 		<React.StrictMode>
 			<Header/>
-			{children}
+			{ children }
 			<Footer/>
 		</React.StrictMode>
 		</body>
