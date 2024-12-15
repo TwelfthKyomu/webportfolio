@@ -1,37 +1,19 @@
-import { repositoryT } from "types/github";
+import { MenuItems } from "@/constants/menu";
+import { RepositoryT } from "types/github";
+import { CommercialProjectT } from "types/project.types";
+import { UpdatesT } from "types/updates";
 
-export type CommercialProjectT = {
-    id: number;
-    name: string;
-    description: string;
-    technologies: string[];
-    previewUrl?: string;
-    imageUrl?: string;
-    startDate: string;
-    endDate?: string;
-    role: string;
-    company: string;
-};
-
-export type projectT = {
-    repositories: repositoryT[];
+export type ProjectT = {
+    repositories: RepositoryT[];
     commercialProjects: CommercialProjectT[];
+	updates: UpdatesT[];
 }
 
 export type ProjectContextType = {
-    projects: projectT;
+    projects: ProjectT;
     isLoading: boolean;
     error: string | null;
-    currentFilter: string;
-
-    setProjects: (projects: projectT) => void;
-    setLoading: (isLoading: boolean) => void;
-    setError: (error: string | null) => void;
-
-    getAllProjects: () => (repositoryT | CommercialProjectT)[];
-    getMyProjects: () => repositoryT[];
-    getCommercialProjects: () => CommercialProjectT[];
-    getUpdates: () => (repositoryT | CommercialProjectT)[];
-    getFilteredProjects: () => (repositoryT | CommercialProjectT)[];
-    filterProjects: (filter: string) => void;
-}
+	currentFilter: MenuItems;
+	handleFilterChange: (filterId: MenuItems) => void;
+	filteredProjects: (RepositoryT | CommercialProjectT | UpdatesT)[];
+};

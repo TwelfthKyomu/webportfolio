@@ -61,6 +61,7 @@ export const technologiesData: TechnologiesData = {
             "Handlebars"
         ],
         languages: [
+			"PHP",
             "JavaScript",
             "TypeScript",
             "HTML5",

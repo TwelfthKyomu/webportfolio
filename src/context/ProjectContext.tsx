@@ -1,112 +1,105 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode, useEffect, useCallback, useMemo } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 
 import { fetchGithubRepository } from "@/api/github/fetchGithub";
-import { repositoryT } from '@/types/github';
-import { ProjectContextType, projectT, CommercialProjectT } from '@/types/project';
+import { MenuItems } from "@/constants/menu";
+import { RepositoryT } from '@/types/github';
+import { ChildrenProps } from "types/chldrenProps";
+import { ProjectContextType, ProjectT } from "types/project";
+import { CommercialProjectT } from "types/project.types";
+import { UpdatesT } from "types/updates";
 
 const ProjectContext = createContext<ProjectContextType | undefined>(undefined);
 
-export const ProjectProvider = ({ children }: { children: ReactNode }) => {
-	const [projects, setProjects] = useState<projectT>({ repositories: [], commercialProjects: [] });
-	const [currentFilter, setCurrentFilter] = useState<string>('all');
+export const ProjectProvider = (props:ChildrenProps) => {
+	const { children } = props;
+	const [projects, setProjects] = useState<ProjectT>({repositories: [], commercialProjects: [], updates: []});
+	const [currentFilter, setCurrentFilter] = useState<MenuItems>(MenuItems.All);
 	const [isLoading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string | null>(null);
 
-	// Получение GitHub проектов
-	const { data: githubProjects, isLoading: isLoadingGithub, error: githubError } = useQuery<repositoryT[]>(
+	const {data: githubProjects, isLoading: isLoadingGithub} = useQuery<RepositoryT[]>(
 		'githubProjects',
 		fetchGithubRepository,
-		{ retry: 1, onError: (err) => setError(err instanceof Error ? err.message : 'Failed to fetch GitHub projects') }
+		{
+			retry: 1,
+			staleTime: 5 * 60 * 1000,
+			onError: (err) => setError(err instanceof Error ? err.message : 'Failed to fetch GitHub projects')
+		}
 	);
 
-	// Получение коммерческих проектов
-	const { data: commercialProjects, isLoading: isLoadingCommercial, error: commercialError } = useQuery<CommercialProjectT[]>(
+	const {data: commercialProjects, isLoading: isLoadingCommercial} = useQuery<CommercialProjectT[]>(
 		'commercialProjects',
 		async () => [],
 		{
 			retry: 1,
-			onError: (err) =>
-				setError(err instanceof Error ? err.message : 'Failed to fetch commercial projects')
+			staleTime: 5 * 60 * 1000,
+			onError: (err) => setError(err instanceof Error ? err.message : 'Failed to fetch commercial projects')
 		}
 	);
 
-	useEffect(() => {
-		setLoading(isLoadingGithub || isLoadingCommercial);
-	}, [isLoadingGithub, isLoadingCommercial]);
-
-	useEffect(() => {
-		setProjects({
-			repositories: githubProjects?.map(repo => ({ ...repo, source: 'github' })) || [],
-			commercialProjects: commercialProjects || []
-		});
-	}, [githubProjects, commercialProjects]);
-
-	const getAllProjects = useCallback(() => [
-		...projects.repositories,
-		...projects.commercialProjects
-	], [projects]);
-
-	const getMyProjects = useCallback(() => (
-		projects.repositories
-	), [projects]);
-
-	const getCommercialProjects = useCallback(() => (
-		projects.commercialProjects
-	), [projects]);
-
-	const getUpdates = useCallback(() => {
-		const thirtyDaysAgo = new Date();
-
-		thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-
-		return getAllProjects().filter(project =>
-			'endDate' in project ? new Date(project.endDate || '') >= thirtyDaysAgo : true
-		);
-	}, [getAllProjects]);
-
-	const getFilteredProjects = useCallback(() => {
-		switch (currentFilter) {
-			case 'personal':
-				return getMyProjects();
-			case 'commercial':
-				return getCommercialProjects();
-			case 'updates':
-				return getUpdates();
-			default:
-				return getAllProjects();
+	const {data: updates, isLoading: isLoadingUpdates} = useQuery<UpdatesT[]>(
+		'updates',
+		async () => [],
+		{
+			retry: 1,
+			staleTime: 5 * 60 * 1000,
+			onError: (err) => setError(err instanceof Error ? err.message : 'Failed to fetch updates')
 		}
-	}, [currentFilter, getAllProjects, getMyProjects, getCommercialProjects, getUpdates]);
+	);
 
-	const filterProjects = useCallback(setCurrentFilter, []);
+	const handleFilterChange = (filterId: MenuItems) => {
+		setCurrentFilter(filterId);
+	};
+
+	useEffect(() => {
+		if (!isLoadingGithub && !isLoadingCommercial && !isLoadingUpdates) {
+			setLoading(false);
+		}
+	}, [isLoadingGithub, isLoadingCommercial, isLoadingUpdates]);
+
+	useEffect(() => {
+		if (githubProjects || commercialProjects) {
+			setProjects({
+				repositories: githubProjects || [],
+				commercialProjects: commercialProjects || [],
+				updates: updates || []
+			});
+		}
+	}, [githubProjects, commercialProjects, updates]);
+
+	const filteredProjects = useMemo(() => {
+		switch (currentFilter) {
+			case MenuItems.Personal:
+				return projects.repositories;
+			case MenuItems.Commercial:
+				return projects.commercialProjects;
+			case MenuItems.Updates:
+				return projects.updates;
+			default:
+				return [
+					...projects.repositories,
+					...projects.commercialProjects
+				];
+		}
+	},[currentFilter, projects]);
 
 	const contextValue = useMemo(() => ({
 		projects,
 		isLoading,
 		error,
 		currentFilter,
-		setProjects,
-		setLoading,
-		setError,
-		getAllProjects,
-		getMyProjects,
-		getCommercialProjects,
-		getUpdates,
-		getFilteredProjects,
-		filterProjects,
+		handleFilterChange,
+		filteredProjects
 	}), [
 		projects,
 		isLoading,
 		error,
 		currentFilter,
-		getAllProjects,
-		getMyProjects,
-		getCommercialProjects,
-		getUpdates,
-		getFilteredProjects,
-		filterProjects
+		handleFilterChange,
+		filteredProjects
 	]);
 
 	return (

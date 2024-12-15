@@ -4,7 +4,7 @@ import MenuButton from "@/components/MenuButton";
 import Profile from "@/components/profile";
 import Projects from "@/components/projects";
 import { ProjectProvider } from "@/context/ProjectContext";
-import QueryProvider from "@/providers/QueryProvider";
+import QueryProvider from "@/context/QueryProvider";
 
 const Main: FC = () => {
 

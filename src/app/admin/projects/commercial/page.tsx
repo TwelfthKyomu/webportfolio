@@ -25,7 +25,7 @@ export default function CommercialProjectsPage() {
 		<main>
 			<div className="commercial">
 				<h1>Добавление коммерческого проекта</h1>
-				<CommercialProjectForm onSubmit={ handleSubmit } />
+				<CommercialProjectForm onSubmit={ handleSubmit }/>
 			</div>
 		</main>
 	);

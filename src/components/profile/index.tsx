@@ -6,7 +6,7 @@ import profileAvatar from 'assets/avatar.jpeg';
 
 const Profile: FC = () => {
     return (
-        <section className="profile">
+        <div className="profile">
             <div className="profile__avatar">
                 <Image
                     src={ profileAvatar }
@@ -19,7 +19,7 @@ const Profile: FC = () => {
                 <h3>&#171;Twelfth&#187;</h3>
                 <h2>Frontend Developer</h2>
             </div>
-        </section>
+        </div>
     );
 };
 

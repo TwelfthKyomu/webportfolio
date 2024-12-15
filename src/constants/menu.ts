@@ -1,6 +1,6 @@
-export const MenuItems = [
-	{ id: 'all', label: 'Все проекты' },
-	{ id: 'personal', label: 'Мои проекты' },
-	{ id: 'commercial', label: 'Коммерческие проекты' },
-	{ id: 'updates', label: 'Обновления' }
-] as const;
+export enum MenuItems {
+	All = 'Все проекты',
+	Personal = 'Мои проекты',
+	Commercial = 'Коммерческие проекты',
+	Updates = 'Обновления'
+}

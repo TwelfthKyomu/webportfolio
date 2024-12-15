@@ -1,6 +1,6 @@
-export interface CommercialProject {
-  id: string;
-  title: string;
+export type CommercialProjectT = {
+  id: number;
+  name: string;
   description: string;
   imagePath: string | null;
   technologies: string[];
@@ -9,8 +9,8 @@ export interface CommercialProject {
   updatedAt: Date;
 }
 
-export interface CreateCommercialProjectDTO {
-  title: string;
+export type CreateCommercialProjectDTO = {
+  name: string;
   description: string;
   technologies: string[];
   liveUrl?: string;

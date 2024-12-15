@@ -1,4 +1,4 @@
-export type repositoryT = {
+export type RepositoryT = {
 	id: number;
     name: string;
     description: string | null;
@@ -8,11 +8,11 @@ export type repositoryT = {
 }
 
 export type GithubRepositoriesContextType = {
-	repositories: repositoryT[];
+	repositories: RepositoryT[];
 	isLoading: boolean;
 	error: string | null;
 
-	setRepositories: (repositories: repositoryT[]) => void;
+	setRepositories: (repositories: RepositoryT[]) => void;
 	setLoading: (isLoading: boolean) => void;
 	setError: (error: string | null) => void;
 }

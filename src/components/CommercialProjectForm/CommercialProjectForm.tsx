@@ -11,7 +11,7 @@ interface CommercialProjectFormProps {
 const CommercialProjectForm: FC<CommercialProjectFormProps> = (props) => {
 	const { onSubmit} = props;
     const [formData, setFormData] = useState<CreateCommercialProjectDTO>({
-        title: '',
+        name: '',
         description: '',
         technologies: [],
         liveUrl: '',
@@ -86,11 +86,11 @@ const CommercialProjectForm: FC<CommercialProjectFormProps> = (props) => {
 
     return (
         <form onSubmit={ handleSubmit } className="commercial-form">
-            { (['title', 'description', 'liveUrl'] as const).map((field) => (
+            { (['name', 'description', 'liveUrl'] as const).map((field) => (
                 <div key={ field } className="commercial-form-field">
                     <label htmlFor={ field } className="commercial-form-label">
                         { {
-                            title: 'Название проекта',
+                            name: 'Название проекта',
                             description: 'Описание',
                             liveUrl: 'URL проекта'
                         }[field] }

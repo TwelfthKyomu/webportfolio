@@ -5,26 +5,22 @@ import { MenuItems } from "@/constants/menu";
 import { useProjectContext } from "@/context/ProjectContext";
 
 const MenuButton: FC = () => {
-    const { filterProjects, currentFilter } = useProjectContext();
-
-    const handleFilterChange = (filterId: string) => {
-        filterProjects(filterId);
-    };
+    const { handleFilterChange, currentFilter } = useProjectContext();
 
     return (
-        <section className="menu">
+        <div className="menu">
             <ul className="menu__list">
-                { MenuItems.map((item, index) => (
+                { Object.values(MenuItems).map((item, index) => (
                     <li
                         key={ index }
-                        className={ `menu__item ${currentFilter === item.id ? 'menu__item--active' : ''}` }
-                        onClick={ () => handleFilterChange(item.id) }
+                        className={ `menu__item ${currentFilter === item ? 'menu__item--active' : ''}` }
+                        onClick={ () => handleFilterChange(item) }
                     >
-                        { item.label }
+                        { item }
                     </li>
                 )) }
             </ul>
-        </section>
+        </div>
     );
 };
 

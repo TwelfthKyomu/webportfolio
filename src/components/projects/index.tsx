@@ -1,24 +1,21 @@
 'use client'
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 
 import { useProjectContext } from "@/context/ProjectContext";
-import { repositoryT } from "@/types/github";
-import { CommercialProjectT } from "@/types/project";
 import DefaultImage from "@public/default-image.jpg";
 import Website from "assets/Website";
 import { Skeleton } from "components/ui/Skeleton";
 
 const Projects = () => {
-    const { getFilteredProjects, isLoading } = useProjectContext();
-    const filteredProjects = getFilteredProjects();
+    const { isLoading, filteredProjects } = useProjectContext();
 
     return (
         <Skeleton isLoading={ isLoading }>
             <div className="projects">
-                { filteredProjects.map((project: repositoryT | CommercialProjectT, index) => (
-                    <div key={ index } className={ `project project-${index}` }>
+               { filteredProjects.map((project, index) => (
+                    <div key={ 'id' in project ? project.id : index } className={ `project project-${index}` }>
                         <h1 className="project__title">{ project.name }</h1>
                         { 'html_url' in project && project.html_url && (
                             <Link className="project__link" target="_blank" href={ project.html_url }>
@@ -41,4 +38,4 @@ const Projects = () => {
     );
 };
 
-export default Projects;
+export default memo(Projects);

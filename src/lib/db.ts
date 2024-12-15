@@ -1,59 +1,47 @@
-import { Pool, QueryResult, QueryResultRow } from 'pg';
+import path from 'path';
 
-const pool = new Pool({
-	user: process.env.DB_USER || 'sa',
-	host: process.env.DB_HOST || 'localhost',
-	database: process.env.DB_NAME || 'portfolio',
-	password: process.env.DB_PASSWORD || '',
-	port: parseInt(process.env.DB_PORT || '5432'),
-});
+import Database from 'better-sqlite3';
+import type { Database as DatabaseType } from 'better-sqlite3';
 
-export async function query<T extends QueryResultRow>(text: string, params?: unknown[]): Promise<QueryResult<T>> {
-	const client = await pool.connect();
+const dbPath = path.join(process.cwd(), 'portfolio.db');
+const db: DatabaseType = new Database(dbPath);
 
-	try {
-		return client.query<T>(text, params);
-	} finally {
-		client.release();
-	}
+interface QueryResult<T> {
+    rows: T[];
+}
+
+export function query<T>(sql: string, params: any[] = []): QueryResult<T> {
+    try {
+        const stmt = db.prepare(sql);
+        const result = stmt.all(...params) as T[];
+        return { rows: result };
+    } catch (error) {
+        console.error('Database error:', error);
+        throw error;
+    }
 }
 
 export async function initDatabase(): Promise<void> {
-	const createTableQuery = `
-        CREATE TABLE IF NOT EXISTS commercial_projects
-        (
-            id
-            UUID
-            PRIMARY
-            KEY
-            DEFAULT
-            gen_random_uuid
-        (
-        ),
-            title VARCHAR
-        (
-            255
-        ) NOT NULL,
-            description TEXT,
-            image_path VARCHAR
-        (
-            500
-        ),
-            technologies TEXT[],
-            live_url VARCHAR
-        (
-            255
-        ),
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            );
-	`;
+    try {
+        db.exec(`
+            CREATE TABLE IF NOT EXISTS commercial_projects (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                description TEXT,
+                image_path TEXT,
+                technologies TEXT,
+                live_url TEXT,
+                created_at DATETIME DEFAULT (datetime('now')),
+                updated_at DATETIME DEFAULT (datetime('now'))
+            )
+        `);
 
-	try {
-		await query(createTableQuery);
-		console.log('Database initialized successfully');
-	} catch (error) {
-		console.error('Error initializing database:', error);
-		throw error;
-	}
+        console.log('Database initialized successfully');
+    } catch (error) {
+        console.error('Error initializing database:', error);
+        throw error;
+    }
 }
+
+// Вызываем инициализацию при импорте
+initDatabase().catch(console.error);
