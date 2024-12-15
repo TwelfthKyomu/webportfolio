@@ -2,9 +2,8 @@ import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
-	swcMinify: true,
 	images: {
-		domains: ['example.com'],
+		domains: ['dannis.ru'],
 	},
 	i18n: {
 		locales: ['en', 'ru'],
