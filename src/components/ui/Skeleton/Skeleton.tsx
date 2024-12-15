@@ -1,5 +1,5 @@
 'use client'
-import { Children, cloneElement, FC, isValidElement, ReactElement, ReactNode, memo } from 'react';
+import { Children, cloneElement, FC, isValidElement, memo, ReactElement, ReactNode } from 'react';
 
 import styles from './Skeleton.module.scss';
 
@@ -11,7 +11,7 @@ type SkeletonProps = {
 const enhanceChildren = (child: ReactNode, isLoading: boolean): ReactNode => {
 	if (!isValidElement(child)) return child;
 
-	const childElement = child as ReactElement;
+	const childElement = child as ReactElement<{ className?: string; children?: ReactNode }>;
 	const className = `${childElement.props.className || ''} ${isLoading ? styles.skeleton : ''}`.trim();
 
 	return cloneElement(childElement, {
@@ -22,7 +22,7 @@ const enhanceChildren = (child: ReactNode, isLoading: boolean): ReactNode => {
 	});
 };
 
-const SkeletonComponent: FC<SkeletonProps> = ({ children, isLoading = false }) => {
+const SkeletonComponent: FC<SkeletonProps> = ({children, isLoading = false}) => {
 	return <>{ Children.map(children, (child) => enhanceChildren(child, isLoading)) }</>;
 };
 

@@ -18,15 +18,15 @@ export async function GET(): Promise<NextResponse> {
 				html_url as htmlUrl,
 				created_at as createdAt,
 				updated_at as updatedAt
-			FROM commercial_projects 
+			FROM commercial_projects
 			ORDER BY created_at DESC`
 		);
 
 		// Преобразуем данные в правильный формат
 		const projects = result.rows.map(project => ({
 			...project,
-			technologies: typeof project.technologies === 'string' 
-				? JSON.parse(project.technologies) 
+			technologies: typeof project.technologies === 'string'
+				? JSON.parse(project.technologies)
 				: project.technologies,
 			createdAt: new Date(project.createdAt),
 			updatedAt: new Date(project.updatedAt)

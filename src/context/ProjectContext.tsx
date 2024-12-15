@@ -6,11 +6,8 @@ import { useQueries } from 'react-query';
 import { fetchGithubRepository } from "@/api/github/fetchGithub";
 import { fetchCommercialProjects } from '@/api/projects/fetchProjects';
 import { MenuItems } from "@/constants/menu";
-import { RepositoryT } from '@/types/github';
 import { ChildrenProps } from "types/chldrenProps";
 import { ProjectContextType, ProjectT } from "types/project";
-import { CommercialProjectT } from "types/project.types";
-import { UpdatesT } from "types/updates";
 
 const ProjectContext = createContext<ProjectContextType | undefined>(undefined);
 
@@ -33,7 +30,8 @@ export const ProjectProvider = (props:ChildrenProps) => {
 			queryFn: fetchCommercialProjects,
 			retry: 1,
 			staleTime: 5 * 60 * 1000,
-			onError: (err: unknown) => setError(err instanceof Error ? err.message : 'Failed to fetch commercial projects')
+			onError: (err: unknown) =>
+				setError(err instanceof Error ? err.message : 'Failed to fetch commercial projects')
 		},
 		{
 			queryKey: ['updates'],

@@ -16,6 +16,7 @@ export default function CommercialProjectsPage() {
 
 			alert('Проект успешно создан!');
 		} catch (error) {
+			// eslint-disable-next-line no-console
 			console.error('Error creating project:', error);
 			alert('Ошибка при создании проекта');
 		}
