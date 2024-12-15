@@ -15,7 +15,7 @@ export async function GET(): Promise<NextResponse> {
 				description,
 				image_path as imagePath,
 				technologies,
-				live_url as liveUrl,
+				html_url as htmlUrl,
 				created_at as createdAt,
 				updated_at as updatedAt
 			FROM commercial_projects 
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 		const title = formData.get('name') as string;
 		const description = formData.get('description') as string;
 		const technologies = JSON.parse(formData.get('technologies') as string);
-		const liveUrl = formData.get('liveUrl') as string | null;
+		const htmlUrl = formData.get('htmlUrl') as string | null;
 		const image = formData.get('image') as File | null;
 
 		let imagePath: string | null = null;
@@ -64,11 +64,11 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
 		const result = await query<CommercialProjectT>(
 			`INSERT INTO commercial_projects 
-			(name, description, image_path, technologies, live_url) 
+			(name, description, image_path, technologies, html_url) 
 			VALUES (?, ?, ?, ?, ?) 
-			RETURNING id, name, description, image_path as imagePath, technologies, live_url as liveUrl, 
+			RETURNING id, name, description, image_path as imagePath, technologies, html_url as htmlUrl, 
 			created_at as createdAt, updated_at as updatedAt`,
-			[title, description, imagePath, JSON.stringify(technologies), liveUrl]
+			[title, description, imagePath, JSON.stringify(technologies), htmlUrl]
 		);
 
 		if (!result.rows[0]) {

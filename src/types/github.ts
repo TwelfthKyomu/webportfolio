@@ -1,3 +1,11 @@
+export type RawGithubRepositoryT = {
+	id: number;
+    name: string;
+    description: string | null;
+	html_url: string | null;
+	language: string | null;
+}
+
 export type RepositoryT = {
 	id: number;
     name: string;

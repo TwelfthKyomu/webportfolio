@@ -23,8 +23,8 @@
 
 	&:hover {
 		.project__image {
-			filter: brightness(0.6) theme(effects, backdrop-blur);
 			transform: scale(1.05);
+			filter: brightness(0.4) theme(effects, backdrop-blur);
 		}
 	}
 
@@ -58,7 +58,7 @@
 	object-fit: cover;
 	object-position: top;
 	top: 0;
-	filter: brightness(0.8);
+	filter: brightness(0.6);
 
 	@include animate-custom((filter, transform), base);
 

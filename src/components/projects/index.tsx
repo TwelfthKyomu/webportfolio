@@ -29,8 +29,9 @@ const Projects = () => {
                             src={ project.imagePath || DefaultImage }
                             alt={ project.name }
                             className={ `project__image ${project.imagePath ? '' : 'default-image'}` }
-                            priority
                             fill
+                            priority
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                 )) }

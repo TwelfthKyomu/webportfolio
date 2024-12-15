@@ -30,7 +30,7 @@ export async function initDatabase(): Promise<void> {
                 description TEXT,
                 image_path TEXT,
                 technologies TEXT,
-                live_url TEXT,
+                html_url TEXT,
                 created_at DATETIME DEFAULT (datetime('now')),
                 updated_at DATETIME DEFAULT (datetime('now'))
             )

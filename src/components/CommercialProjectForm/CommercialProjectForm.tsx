@@ -14,7 +14,7 @@ const CommercialProjectForm: FC<CommercialProjectFormProps> = (props) => {
         name: '',
         description: '',
         technologies: [],
-        liveUrl: '',
+        htmlUrl: '',
         image: null,
     });
 
@@ -86,13 +86,13 @@ const CommercialProjectForm: FC<CommercialProjectFormProps> = (props) => {
 
     return (
         <form onSubmit={ handleSubmit } className="commercial-form">
-            { (['name', 'description', 'liveUrl'] as const).map((field) => (
+            { (['name', 'description', 'htmlUrl'] as const).map((field) => (
                 <div key={ field } className="commercial-form-field">
                     <label htmlFor={ field } className="commercial-form-label">
                         { {
                             name: 'Название проекта',
                             description: 'Описание',
-                            liveUrl: 'URL проекта'
+                            htmlUrl: 'URL проекта'
                         }[field] }
                     </label>
                     { field === 'description' ? (
@@ -107,7 +107,7 @@ const CommercialProjectForm: FC<CommercialProjectFormProps> = (props) => {
                     ) : (
                         <input
                             id={ field }
-                            type={ field === 'liveUrl' ? 'url' : 'text' }
+                            type={ field === 'htmlUrl' ? 'url' : 'text' }
                             value={ formData[field] }
                             onChange={ (e) => updateField(field, e.target.value) }
                             required
