@@ -1,4 +1,4 @@
-export type repositoryT = {
+export type RawGithubRepositoryT = {
 	id: number;
     name: string;
     description: string | null;
@@ -6,12 +6,22 @@ export type repositoryT = {
 	language: string | null;
 }
 
+export type RepositoryT = {
+	id: number;
+    name: string;
+    description: string | null;
+	htmlUrl: string | null;
+	language: string | null;
+	source: 'github';
+	imagePath: string | null;
+}
+
 export type GithubRepositoriesContextType = {
-	repositories: repositoryT[];
+	repositories: RepositoryT[];
 	isLoading: boolean;
 	error: string | null;
 
-	setRepositories: (repositories: repositoryT[]) => void;
+	setRepositories: (repositories: RepositoryT[]) => void;
 	setLoading: (isLoading: boolean) => void;
 	setError: (error: string | null) => void;
 }

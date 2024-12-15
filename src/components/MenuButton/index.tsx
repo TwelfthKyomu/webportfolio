@@ -2,26 +2,26 @@
 import { FC } from "react";
 
 import { MenuItems } from "@/constants/menu";
-import { useFilter } from "@/context/FilterContext";
+import { useProjectContext } from "@/context/ProjectContext";
 
 const MenuButton: FC = () => {
-	const {currentFilter, setFilter} = useFilter();
+    const { handleFilterChange, currentFilter } = useProjectContext();
 
-	return (
-		<section className="menu">
-			<ul className="menu__list">
-				{ MenuItems.map((item, index) => (
-					<li
-						key={ index }
-						className={ `menu__item ${currentFilter === item.id ? 'menu__item--active' : ''}` }
-						onClick={ () => setFilter(item.id) }
-					>
-						{ item.label }
-					</li>
-				)) }
-			</ul>
-		</section>
-	);
+    return (
+        <div className="menu">
+            <ul className="menu__list">
+                { Object.values(MenuItems).map((item, index) => (
+                    <li
+                        key={ index }
+                        className={ `menu__item ${currentFilter === item ? 'menu__item--active' : ''}` }
+                        onClick={ () => handleFilterChange(item) }
+                    >
+                        { item }
+                    </li>
+                )) }
+            </ul>
+        </div>
+    );
 };
 
 export default MenuButton;

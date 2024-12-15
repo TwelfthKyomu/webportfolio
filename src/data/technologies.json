@@ -1,0 +1,51 @@
+{
+    "frontend": [
+        "React", 
+        "Next.js", 
+        "Vue.js", 
+        "Angular", 
+        "Svelte", 
+        "TypeScript", 
+        "JavaScript", 
+        "HTML5", 
+        "CSS3", 
+        "Tailwind CSS", 
+        "SCSS", 
+        "Styled Components"
+    ],
+    "backend": [
+        "Node.js", 
+        "Express", 
+        "Django", 
+        "Flask", 
+        "FastAPI", 
+        "Spring Boot", 
+        "Ruby on Rails", 
+        "Laravel", 
+        "Python", 
+        "Java", 
+        "C#", 
+        "Go", 
+        "Rust"
+    ],
+    "databases": [
+        "PostgreSQL", 
+        "MongoDB", 
+        "MySQL", 
+        "SQLite", 
+        "Redis", 
+        "Firebase", 
+        "GraphQL"
+    ],
+    "devops": [
+        "Docker", 
+        "Kubernetes", 
+        "AWS", 
+        "Google Cloud", 
+        "Azure", 
+        "Heroku", 
+        "Jenkins", 
+        "GitHub Actions", 
+        "GitLab CI/CD"
+    ]
+}

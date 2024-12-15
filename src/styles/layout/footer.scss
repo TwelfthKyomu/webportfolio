@@ -1,7 +1,8 @@
 .footer {
-	width: fit-content;
-	margin: auto;
 	text-align: center;
+	display: block;
+	margin: d-vw(32) auto 0;
+	padding-bottom: d-vw(32);
 }
 
 .footer__copyright {
