@@ -4,6 +4,7 @@ export type repositoryT = {
     description: string | null;
 	html_url: string | null;
 	language: string | null;
+	source: 'github';
 }
 
 export type GithubRepositoriesContextType = {

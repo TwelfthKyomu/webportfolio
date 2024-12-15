@@ -1,50 +1,46 @@
 .projects {
-    display: grid;
-    gap: d-vw(12);
-    grid-template-columns: repeat(2, 1fr);
+	display: grid;
+	gap: d-vw(12);
+	grid-template-columns: repeat(2, 1fr);
 	min-height: d-vw(240);
 }
 
 .project {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto 1fr auto;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    background: theme(overlay, light);
-    backdrop-filter: theme(effects, backdrop-blur);
-    box-shadow: theme(shadow, sm);
-    padding: d-vw(16);
-    border-radius: d-vw(12);
-    min-height: d-vw(240);
-    gap: d-vw(8);
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: auto 1fr auto;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	background: theme(overlay, light);
+	backdrop-filter: theme(effects, backdrop-blur);
+	box-shadow: theme(shadow, sm);
+	padding: d-vw(16);
+	border-radius: d-vw(12);
+	min-height: d-vw(240);
+	gap: d-vw(8);
 	opacity: 0;
 
-    &:hover {
-        img {
-            filter: brightness(0.6) theme(effects, backdrop-blur);
-            transform: translateY(-50%) scale(1.05);
-        }
+	&:hover {
+		img {
+			filter: brightness(0.6) theme(effects, backdrop-blur);
+			transform: translateY(-50%) scale(1.05);
+		}
+	}
 
-        .project__technologies--content {
-            opacity: 1;
-        }
-    }
+	img {
+		z-index: -1;
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transform: translateY(-50%);
+		top: 50%;
+		filter: brightness(0.8);
 
-    img {
-        z-index: -1;
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: translateY(-50%);
-        top: 50%;
-        filter: brightness(0.8);
-
-        @include animate-custom((filter, transform), base);
-    }
+		@include animate-custom((filter, transform), base);
+	}
 
 	@for $i from 0 through 4 {
 		&.project-#{$i} {
@@ -68,112 +64,112 @@
 }
 
 .project__title {
-    color: theme(text, primary);
+	color: theme(text, primary);
 
-    @include h3;
+	@include h3;
 }
 
 .project__subtitle {
-    opacity: 0.8;
-    user-select: none;
-    grid-column: 1 / -1;
+	opacity: 0.8;
+	user-select: none;
+	grid-column: 1 / -1;
 
-    @include caption;
+	@include caption;
 }
 
 .project__technologies {
-    display: flex;
-    justify-content: space-around;
-    gap: d-vw(16);
+	display: flex;
+	justify-content: space-around;
+	gap: d-vw(16);
 
-    li {
-        cursor: pointer;
-        position: relative;
-        color: theme(text, secondary);
+	li {
+		cursor: pointer;
+		position: relative;
+		color: theme(text, secondary);
 
-        span {
-            @include body;
-        }
+		span {
+			@include body;
+		}
 
-        &::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 1px;
-            background: currentColor;
-            margin-top: d-vw(2);
+		&::after {
+			content: '';
+			display: block;
+			width: 0;
+			height: 1px;
+			background: currentColor;
+			margin-top: d-vw(2);
 
-            @include animate(width);
-        }
+			@include animate(width);
+		}
 
-        &:hover {
-            color: theme(text, primary);
+		&:hover {
+			color: theme(text, primary);
 
-            &::after {
-                width: 100%;
-            }
+			&::after {
+				width: 100%;
+			}
 
-            .project__technologies--content {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    }
+			.project__technologies--content {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	}
 }
 
 .project__technologies--content {
-    position: absolute;
-    left: 0;
-    opacity: 0;
-    overflow-y: scroll;
-    width: 100%;
-    backdrop-filter: theme(effects, backdrop-blur);
-    background: theme(overlay, medium);
-    bottom: calc(100% + #{d-vw(8)});
-    padding: d-vw(8);
-    border-radius: d-vw(8);
-    min-width: d-vw(120);
-    max-height: d-vw(180);
-    transform: translateY(d-vw(8));
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	overflow-y: scroll;
+	width: 100%;
+	backdrop-filter: theme(effects, backdrop-blur);
+	background: theme(overlay, medium);
+	bottom: calc(100% + #{d-vw(8)});
+	padding: d-vw(8);
+	border-radius: d-vw(8);
+	min-width: d-vw(120);
+	max-height: d-vw(180);
+	transform: translateY(d-vw(8));
 
-    @include animate-custom((opacity, transform), base);
+	@include animate-custom((opacity, transform), base);
 
-    li {
-        padding: d-vw(4) d-vw(8);
-        border-radius: d-vw(4);
+	li {
+		padding: d-vw(4) d-vw(8);
+		border-radius: d-vw(4);
 
-        @include caption;
+		@include caption;
 
-        &::after {
-            display: none;
-        }
+		&::after {
+			display: none;
+		}
 
-        &:hover {
-            background: theme(overlay, light);
-        }
-    }
+		&:hover {
+			background: theme(overlay, light);
+		}
+	}
 }
 
 .project__link {
-    width: fit-content;
-    height: fit-content;
-    border-radius: 50%;
-    background: theme(overlay, medium);
-    backdrop-filter: theme(effects, backdrop-blur);
-    padding: d-vw(8);
+	width: fit-content;
+	height: fit-content;
+	border-radius: 50%;
+	background: theme(overlay, medium);
+	backdrop-filter: theme(effects, backdrop-blur);
+	padding: d-vw(8);
 
-    @include animate(background);
+	@include animate(background);
 
-    &:hover {
-        background: theme(overlay, light);
-    }
+	&:hover {
+		background: theme(overlay, light);
+	}
 
-    svg {
-        width: d-vw(18);
-        height: auto;
-        display: block;
-        position: relative;
-        left: -1px;
-        fill: theme(brand, primary);
-    }
+	svg {
+		width: d-vw(18);
+		height: auto;
+		display: block;
+		position: relative;
+		left: -1px;
+		fill: theme(brand, primary);
+	}
 }
