@@ -9,28 +9,32 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "@next/eslint-plugin-next": "^15.0.3",
-        "@types/node": "20.10.5",
-        "@types/react": "18.2.45",
-        "@types/react-dom": "18.2.18",
+        "@next/eslint-plugin-next": "^15.1.0",
+        "@types/node": "22.10.2",
+        "@types/pg": "^8.11.10",
+        "@types/react": "19.0.1",
+        "@types/react-dom": "19.0.2",
+        "better-sqlite3": "^11.7.0",
         "eslint-plugin-promise": "^7.2.1",
-        "next": "14.2.10",
-        "prettier": "^3.4.1",
-        "react": "18.2.0",
-        "react-dom": "18.2.0",
+        "next": "15.1.0",
+        "pg": "^8.13.1",
+        "prettier": "^3.4.2",
+        "react": "19.0.0",
+        "react-dom": "19.0.0",
         "react-query": "^3.39.3",
         "scss": "^0.2.4",
         "sharp": "^0.33.5",
-        "typescript": "5.3.3",
-        "zustand": "^5.0.1"
+        "typescript": "5.7.2",
+        "zustand": "^5.0.2"
     },
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^8.16.0",
-        "@typescript-eslint/parser": "^8.16.0",
-        "eslint": "^8.57.1",
-        "eslint-config-next": "14.0.4",
+        "@types/better-sqlite3": "^7.6.12",
+        "@typescript-eslint/eslint-plugin": "^8.18.0",
+        "@typescript-eslint/parser": "^8.18.0",
+        "eslint": "^9.17.0",
+        "eslint-config-next": "15.1.0",
         "eslint-config-prettier": "^9.1.0",
-        "eslint-import-resolver-typescript": "^3.6.3",
+        "eslint-import-resolver-typescript": "^3.7.0",
         "sass": "^1.81.0"
     }
 }
