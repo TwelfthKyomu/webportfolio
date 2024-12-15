@@ -15,10 +15,10 @@ const Projects = () => {
         <Skeleton isLoading={ isLoading }>
             <div className="projects">
                { filteredProjects.map((project, index) => (
-                    <div key={ 'id' in project ? project.id : index } className={ `project project-${index}` }>
+                    <div key={ project.id } className={ `project project-${index}` }>
                         <h1 className="project__title">{ project.name }</h1>
-                        { 'html_url' in project && project.html_url && (
-                            <Link className="project__link" target="_blank" href={ project.html_url }>
+                        { project.htmlUrl && (
+                            <Link className="project__link" target="_blank" href={ project.htmlUrl }>
                                 <Website/>
                             </Link>
                         ) }
@@ -26,10 +26,11 @@ const Projects = () => {
                             { project.description }
                         </h6>
                         <Image
-                            src={ 'imageUrl' in project && project.imageUrl ? project.imageUrl : DefaultImage }
+                            src={ project.imagePath || DefaultImage }
                             alt={ project.name }
-                            className="project__image"
+                            className={ `project__image ${project.imagePath ? '' : 'default-image'}` }
                             priority
+                            fill
                         />
                     </div>
                 )) }

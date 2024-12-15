@@ -4,7 +4,7 @@ export type CommercialProjectT = {
   description: string;
   imagePath: string | null;
   technologies: string[];
-  liveUrl?: string;
+  htmlUrl?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -13,6 +13,6 @@ export type CreateCommercialProjectDTO = {
   name: string;
   description: string;
   technologies: string[];
-  liveUrl?: string;
+  htmlUrl?: string;
   image?: File | null;
 }

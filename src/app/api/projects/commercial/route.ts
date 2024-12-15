@@ -8,9 +8,31 @@ import { CommercialProjectT } from '@/types/project.types';
 
 export async function GET(): Promise<NextResponse> {
 	try {
-		const result = await query<CommercialProjectT>('SELECT * FROM commercial_projects ORDER BY created_at DESC');
+		const result = await query<CommercialProjectT>(
+			`SELECT 
+				id,
+				name,
+				description,
+				image_path as imagePath,
+				technologies,
+				live_url as liveUrl,
+				created_at as createdAt,
+				updated_at as updatedAt
+			FROM commercial_projects 
+			ORDER BY created_at DESC`
+		);
 
-		return NextResponse.json(result.rows);
+		// Преобразуем данные в правильный формат
+		const projects = result.rows.map(project => ({
+			...project,
+			technologies: typeof project.technologies === 'string' 
+				? JSON.parse(project.technologies) 
+				: project.technologies,
+			createdAt: new Date(project.createdAt),
+			updatedAt: new Date(project.updatedAt)
+		}));
+
+		return NextResponse.json(projects);
 	} catch (error) {
 		return NextResponse.json({error: (error as Error).message}, {status: 500});
 	}

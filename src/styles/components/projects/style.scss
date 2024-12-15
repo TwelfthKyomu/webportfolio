@@ -22,24 +22,10 @@
 	opacity: 0;
 
 	&:hover {
-		img {
+		.project__image {
 			filter: brightness(0.6) theme(effects, backdrop-blur);
-			transform: translateY(-50%) scale(1.05);
+			transform: scale(1.05);
 		}
-	}
-
-	img {
-		z-index: -1;
-		position: absolute;
-		inset: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		transform: translateY(-50%);
-		top: 50%;
-		filter: brightness(0.8);
-
-		@include animate-custom((filter, transform), base);
 	}
 
 	@for $i from 0 through 4 {
@@ -62,6 +48,25 @@
 		scale: 1;
 	}
 }
+
+.project__image {
+	z-index: -1;
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top;
+	top: 0;
+	filter: brightness(0.8);
+
+	@include animate-custom((filter, transform), base);
+
+	&.default-image {
+		object-position: center;
+	}
+}
+
 
 .project__title {
 	color: theme(text, primary);

@@ -2,9 +2,10 @@ export type RepositoryT = {
 	id: number;
     name: string;
     description: string | null;
-	html_url: string | null;
+	htmlUrl: string | null;
 	language: string | null;
 	source: 'github';
+	imagePath: string | null;
 }
 
 export type GithubRepositoriesContextType = {

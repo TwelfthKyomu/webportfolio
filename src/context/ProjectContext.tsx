@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from '
 import { useQuery } from 'react-query';
 
 import { fetchGithubRepository } from "@/api/github/fetchGithub";
+import { fetchCommercialProjects } from '@/api/projects/fetchProjects';
 import { MenuItems } from "@/constants/menu";
 import { RepositoryT } from '@/types/github';
 import { ChildrenProps } from "types/chldrenProps";
@@ -32,7 +33,7 @@ export const ProjectProvider = (props:ChildrenProps) => {
 
 	const {data: commercialProjects, isLoading: isLoadingCommercial} = useQuery<CommercialProjectT[]>(
 		'commercialProjects',
-		async () => [],
+		fetchCommercialProjects,
 		{
 			retry: 1,
 			staleTime: 5 * 60 * 1000,

@@ -4,9 +4,10 @@ export type UpdatesT = {
 	description: string;
 	technologies: string[];
 	previewUrl?: string;
-	imageUrl?: string;
+	imagePath?: string;
 	startDate: string;
 	endDate?: string;
 	role: string;
 	company: string;
+	htmlUrl?: string;
 }
