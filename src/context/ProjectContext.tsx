@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQueries } from 'react-query';
 
 import { fetchGithubRepository } from "@/api/github/fetchGithub";
 import { fetchCommercialProjects } from '@/api/projects/fetchProjects';
@@ -18,58 +18,48 @@ export const ProjectProvider = (props:ChildrenProps) => {
 	const { children } = props;
 	const [projects, setProjects] = useState<ProjectT>({repositories: [], commercialProjects: [], updates: []});
 	const [currentFilter, setCurrentFilter] = useState<MenuItems>(MenuItems.All);
-	const [isLoading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string | null>(null);
 
-	const {data: githubProjects, isLoading: isLoadingGithub} = useQuery<RepositoryT[]>(
-		'githubProjects',
-		fetchGithubRepository,
+	const queries = useQueries([
 		{
+			queryKey: ['githubProjects'],
+			queryFn: fetchGithubRepository,
 			retry: 1,
 			staleTime: 5 * 60 * 1000,
-			onError: (err) => setError(err instanceof Error ? err.message : 'Failed to fetch GitHub projects')
+			onError: (err: unknown) => setError(err instanceof Error ? err.message : 'Failed to fetch GitHub projects')
+		},
+		{
+			queryKey: ['commercialProjects'],
+			queryFn: fetchCommercialProjects,
+			retry: 1,
+			staleTime: 5 * 60 * 1000,
+			onError: (err: unknown) => setError(err instanceof Error ? err.message : 'Failed to fetch commercial projects')
+		},
+		{
+			queryKey: ['updates'],
+			queryFn: async () => [],
+			retry: 1,
+			staleTime: 5 * 60 * 1000,
+			onError: (err: unknown) => setError(err instanceof Error ? err.message : 'Failed to fetch updates')
 		}
-	);
+	]);
 
-	const {data: commercialProjects, isLoading: isLoadingCommercial} = useQuery<CommercialProjectT[]>(
-		'commercialProjects',
-		fetchCommercialProjects,
-		{
-			retry: 1,
-			staleTime: 5 * 60 * 1000,
-			onError: (err) => setError(err instanceof Error ? err.message : 'Failed to fetch commercial projects')
-		}
-	);
-
-	const {data: updates, isLoading: isLoadingUpdates} = useQuery<UpdatesT[]>(
-		'updates',
-		async () => [],
-		{
-			retry: 1,
-			staleTime: 5 * 60 * 1000,
-			onError: (err) => setError(err instanceof Error ? err.message : 'Failed to fetch updates')
-		}
-	);
+	const isLoading = queries.some(query => query.isLoading);
+	const [githubQuery, commercialQuery, updatesQuery] = queries;
 
 	const handleFilterChange = (filterId: MenuItems) => {
 		setCurrentFilter(filterId);
 	};
 
 	useEffect(() => {
-		if (!isLoadingGithub && !isLoadingCommercial && !isLoadingUpdates) {
-			setLoading(false);
-		}
-	}, [isLoadingGithub, isLoadingCommercial, isLoadingUpdates]);
-
-	useEffect(() => {
-		if (githubProjects || commercialProjects) {
+		if (!isLoading) {
 			setProjects({
-				repositories: githubProjects || [],
-				commercialProjects: commercialProjects || [],
-				updates: updates || []
+				repositories: githubQuery.data || [],
+				commercialProjects: commercialQuery.data || [],
+				updates: updatesQuery.data || []
 			});
 		}
-	}, [githubProjects, commercialProjects, updates]);
+	}, [githubQuery.data, commercialQuery.data, updatesQuery.data, isLoading]);
 
 	const filteredProjects = useMemo(() => {
 		switch (currentFilter) {

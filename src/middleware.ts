@@ -15,7 +15,6 @@ export function middleware(request: NextRequest) {
         }
 
         if (!ALLOWED_IPS.includes(clientIp)) {
-            console.log(`Unauthorized access attempt from IP: ${clientIp}`)
             return NextResponse.redirect(new URL('/', request.url))
         }
     }
