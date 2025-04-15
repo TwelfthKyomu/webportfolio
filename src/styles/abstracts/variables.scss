@@ -1,0 +1,101 @@
+$theme: (
+	bg: (
+		primary: #0A0A0B,
+		secondary: #121214,
+		tertiary: #18181B,
+		elevated: #1E1E21,
+		card: #27272A,
+		modal: #2D2D30,
+		tooltip: #333336,
+	),
+	text: (
+		primary: #FFFFFF,
+		secondary: #A1A1AA,
+		tertiary: #71717A,
+		disabled: #52525B,
+		inverse: #18181B,
+		link: #818CF8,
+		code: #E879F9,
+	),
+	brand: (
+		primary: #818CF8,
+		secondary: #C084FC,
+		accent: #F472B6,
+		highlight: #34D399,
+		warning: #FBBF24,
+		error: #FB7185,
+		success: #34D399,
+	),
+	border: (
+		light: rgba(255, 255, 255, 0.1),
+		medium: rgba(255, 255, 255, 0.15),
+		strong: rgba(255, 255, 255, 0.2),
+		focus: #818CF8,
+	),
+	state: (
+		hover: (
+			bg: #27272A,
+			text: #FFFFFF,
+			brand: #6366F1,
+			border: rgba(255, 255, 255, 0.2)
+		),
+		active: (
+			bg: #2D2D30,
+			text: #FFFFFF,
+			brand: #4F46E5,
+			border: rgba(255, 255, 255, 0.25)
+		),
+		focus: (
+			ring: rgba(129, 140, 248, 0.5),
+			border: #818CF8
+		),
+		disabled: (
+			bg: #27272A,
+			text: #52525B,
+			border: rgba(255, 255, 255, 0.1)
+		)
+	),
+	overlay: (
+		light: rgba(0, 0, 0, 0.3),
+		medium: rgba(0, 0, 0, 0.5),
+		heavy: rgba(0, 0, 0, 0.7),
+		blur: rgba(0, 0, 0, 0.8)
+	),
+	shadow: (
+		sm: 0 1px 2px rgba(0, 0, 0, 0.3),
+		md: 0 4px 6px rgba(0, 0, 0, 0.4),
+		lg: 0 10px 15px rgba(0, 0, 0, 0.5),
+		xl: 0 20px 25px rgba(0, 0, 0, 0.6)
+	),
+	gradient: (
+		primary: linear-gradient(135deg, #818CF8 0%, #C084FC 100%),
+		secondary: linear-gradient(135deg, #F472B6 0%, #FB7185 100%),
+		dark: linear-gradient(180deg, #0A0A0B 0%, #18181B 100%)
+	),
+	effects: (
+		glass: rgba(24, 24, 27, 0.7),
+		glass-border: rgba(255, 255, 255, 0.1),
+		backdrop-blur: blur(8px)
+	)
+);
+
+$animations: (
+	duration: (
+		fast: 200ms,
+		base: 300ms,
+		slow: 500ms,
+		slower: 700ms
+	),
+	timing: (
+		ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1),
+		ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1),
+		ease-in-out: cubic-bezier(0.4, 0, 0.2, 1),
+		bounce: cubic-bezier(0.87, -0.41, 0.19, 1.44)
+	),
+	delay: (
+		none: 0ms,
+		short: 100ms,
+		base: 200ms,
+		long: 1300ms
+	)
+);

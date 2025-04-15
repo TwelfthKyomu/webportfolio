@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .header {
     margin-bottom: d-vw(32);
 }
@@ -24,7 +26,7 @@
 			transform: scaleX(0);
 			transform-origin: right;
 
-			@include animate(transform, normal);
+			@include animate(transform);
 		}
 
 		&:hover::after {

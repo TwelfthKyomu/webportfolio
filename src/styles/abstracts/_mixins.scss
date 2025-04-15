@@ -1,24 +1,86 @@
-@mixin animate($properties...) {
-	$duration: $transition-normal;
-	$timing: $ease-default;
+@use "functions" as *;
 
-	@if length($properties) >= 2 {
-		@if nth($properties, 2) == slower {
-			$duration: $transition-slower;
-		} @else if nth($properties, 2) == slow {
-			$duration: $transition-slow;
-		} @else if nth($properties, 2) == fast {
-			$duration: $transition-fast;
-		}
-	}
+@mixin fluid-value($property, $min-px, $max-px) {
+    #{$property}: $min-px + px;
 
-	transition-property: nth($properties, 1);
-	transition-duration: $duration;
-	transition-timing-function: $timing;
+    @media (min-width: 375px) {
+        #{$property}: calc(#{$min-px}px + (#{$max-px} - #{$min-px}) * ((100vw - 375px) / (#{$desktop-width} - 375)));
+    }
+
+    @media (min-width: #{$desktop-width}px) {
+        #{$property}: $max-px + px;
+    }
 }
 
-@mixin mobile {
-    @media (max-width: 767px) {
-        @content;
+@mixin animate($properties...) {
+	$duration: animate-get(duration, base);
+	$timing: animate-get(timing, ease-out-expo);
+	$delay: animate-get(delay, none);
+
+	transition-property: $properties;
+	transition-duration: $duration;
+	transition-timing-function: $timing;
+	transition-delay: $delay;
+}
+
+@mixin animate-custom($properties, $duration: base, $timing: ease-out-expo, $delay: none) {
+	transition-property: $properties;
+	transition-duration: animate-get(duration, $duration);
+	transition-timing-function: animate-get(timing, $timing);
+	transition-delay: animate-get(delay, $delay);
+}
+
+@mixin animate-group($items...) {
+    @each $item in $items {
+        $property: nth($item, 1);
+        $duration: if(length($item) > 1, nth($item, 2), base);
+        $timing: if(length($item) > 2, nth($item, 3), ease-out-expo);
+        $delay: if(length($item) > 3, nth($item, 4), none);
+
+        transition-property: append(transition-property, $property, comma);
+        transition-duration: append(transition-duration, animate-get(duration, $duration), comma);
+        transition-timing-function: append(transition-timing-function, animate-get(timing, $timing), comma);
+        transition-delay: append(transition-delay, animate-get(delay, $delay), comma);
+    }
+}
+
+@mixin fade-in($duration: base, $timing: ease-out-expo, $delay: none) {
+    opacity: 0;
+    @include animate-custom(opacity, $duration, $timing, $delay);
+
+    &.visible {
+        opacity: 1;
+    }
+}
+
+@mixin slide-in($direction: 'up', $amount: 20px, $duration: base, $timing: ease-out-expo, $delay: none) {
+    opacity: 0;
+
+    @if $direction == 'up' {
+        transform: translateY($amount);
+    } @else if $direction == 'down' {
+        transform: translateY(-$amount);
+    } @else if $direction == 'left' {
+        transform: translateX($amount);
+    } @else if $direction == 'right' {
+        transform: translateX(-$amount);
+    }
+
+    @include animate-custom((transform, opacity), $duration, $timing, $delay);
+
+    &.visible {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@mixin scale-in($from: 0.95, $duration: base, $timing: ease-out-expo, $delay: none) {
+    opacity: 0;
+    transform: scale($from);
+    @include animate-custom((transform, opacity), $duration, $timing, $delay);
+
+    &.visible {
+        opacity: 1;
+        transform: scale(1);
     }
 }

@@ -1,4 +1,4 @@
-@import "profile/style";
-@import "menuButton/style";
-@import "projects/style";
-@import "commercialForm/style";
+@use "commercialForm";
+@use "menuButton";
+@use "profile";
+@use "projects";

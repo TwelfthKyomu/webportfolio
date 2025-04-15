@@ -1,3 +1,5 @@
+@use "../../abstracts" as *;
+
 .projects {
 	display: grid;
 	gap: d-vw(12);

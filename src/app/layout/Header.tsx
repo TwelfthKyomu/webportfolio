@@ -1,11 +1,13 @@
 import React from 'react';
 
+import Link from "components/ui/Link";
+
 const Header: React.FC = () => {
 	return (
 		<header className="header">
 			<nav className="header__nav">
-				<a className="active" href="/public">Главная</a>
-				<a href="/public">Проекты</a>
+				<Link href="/">Главная</Link>
+				<Link href="/public">Проекты</Link>
 			</nav>
 		</header>
 	);

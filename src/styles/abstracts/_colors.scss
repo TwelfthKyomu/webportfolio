@@ -1,0 +1,10 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+@function theme($category, $key, $subKey: null) {
+    @if $subKey {
+        @return map.get(map.get(map.get($theme, $category), $key), $subKey);
+    } @else {
+        @return map.get(map.get($theme, $category), $key);
+    }
+}

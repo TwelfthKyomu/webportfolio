@@ -1,15 +1,14 @@
+@use "sass:map";
+@use "functions" as *;
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
 
-// Переменные для шрифта
 $font-nunito: 'Nunito', sans-serif;
 
-// Миксин для быстрого применения шрифта
 @mixin font-nunito($weight: 400) {
   font-family: $font-nunito;
   font-weight: $weight;
 }
 
-// Карта весов шрифта
 $font-weights: (
   'extralight': 200,
   'light': 300,
@@ -21,9 +20,8 @@ $font-weights: (
   'black': 900
 );
 
-// Функция для получения веса шрифта
 @function font-weight($weight-name) {
-  @return map-get($font-weights, $weight-name);
+  @return map.get($font-weights, $weight-name);
 }
 
 // Базовые текстовые стили

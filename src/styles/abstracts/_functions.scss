@@ -1,0 +1,17 @@
+@use "sass:map";
+@use 'variables' as *;
+
+$desktop-width: 1440;
+$mobile-width: 414;
+
+@function d-vw($px) {
+    @return #{calc($px / $desktop-width) * 100}vw;
+}
+
+@function m-vw($px) {
+    @return #{calc($px / $mobile-width) * 100}vw;
+}
+
+@function animate-get($category, $key) {
+    @return map.get(map.get($animations, $category), $key);
+}
