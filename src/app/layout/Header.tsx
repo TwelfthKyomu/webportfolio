@@ -4,8 +4,8 @@ import Link from "components/ui/Link";
 
 const Header: React.FC = () => {
 	return (
-		<header className="header">
-			<nav className="header__nav">
+		<header>
+			<nav>
 				<Link href="/">Главная</Link>
 				<Link href="/public">Проекты</Link>
 			</nav>

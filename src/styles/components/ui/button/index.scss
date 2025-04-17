@@ -1,0 +1,27 @@
+@use "../../../abstracts" as *;
+
+.button {
+	padding: theme(spacing, sm) theme(spacing, md);
+	background-color: theme(brand, primary);
+	color: theme(text, on-brand);
+	border: none;
+	border-radius: theme(radius, base);
+	font-weight: theme(typography, font-weight, medium);
+
+	@include animate-all();
+
+	&:hover {
+		background-color: theme(state, hover, brand);
+	}
+
+	&:active {
+		background-color: theme(state, active, brand);
+	}
+
+	&:disabled {
+		background-color: theme(state, disabled, bg);
+		color: theme(state, disabled, text);
+		opacity: theme(state, disabled, opacity);
+		cursor: not-allowed;
+	}
+}

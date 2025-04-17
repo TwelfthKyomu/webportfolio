@@ -1,11 +1,20 @@
-import Main from "@/app/layout/Main";
+import React from 'react';
+
+import Menu from 'components/Menu';
+import Divider from 'components/ui/Divider';
+
+import Profile from '../components/Profile';
+import Projects from '../components/Projects';
 
 const Home = () => {
-	return (
-		<main className='main'>
-			<Main/>
-		</main>
-	);
-}
+    return (
+        <main>
+            <Profile />
+            <Divider />
+            <Menu />
+            <Projects />
+        </main>
+    );
+};
 
 export default Home;

@@ -1,5 +1,4 @@
 @use "sass:map";
-@use 'variables' as *;
 
 $desktop-width: 1440;
 $mobile-width: 414;
@@ -12,6 +11,3 @@ $mobile-width: 414;
     @return #{calc($px / $mobile-width) * 100}vw;
 }
 
-@function animate-get($category, $key) {
-    @return map.get(map.get($animations, $category), $key);
-}

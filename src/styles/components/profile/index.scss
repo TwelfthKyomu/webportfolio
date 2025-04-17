@@ -6,32 +6,25 @@
     }
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .profile {
     user-select: none;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: auto 1fr;
-    opacity: 0;
-    animation: fadeInUp 0.6s ease-out forwards;
+    display: flex;
+	align-items: center;
     gap: d-vw(24);
     margin-bottom: d-vw(24);
+
+	h1 {
+		font-size: d-vw(40);
+	}
+
+	h2 {
+		position: absolute;
+	}
 }
 
 .profile__avatar {
     border-radius: 50%;
     position: relative;
-    grid-row: span 2;
     width: d-vw(204);
     height: d-vw(204);
     padding: d-vw(8);
@@ -63,38 +56,5 @@
     }
 }
 
-.profile__info {
-    display: flex;
-    flex-direction: column;
-    gap: d-vw(4);
-    height: fit-content;
-
-    h1 {
-        @include h2;
-    }
-
-    h2 {
-        @include h4;
-    }
-
-    h3 {
-        @include body-small;
-    }
-}
-
-.profile__stats {
-    display: flex;
-    flex-wrap: wrap;
-    height: fit-content;
-    gap: d-vw(12);
-    color: theme(text, secondary);
-}
-
-.profile__stat {
-    @include body-large;
-
-    &-count {
-        font-weight: bold;
-        margin-right: d-vw(8);
-    }
+.profile__name {
 }

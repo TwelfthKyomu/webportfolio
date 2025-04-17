@@ -12,7 +12,7 @@
     }
 }
 
-.main {
+main {
     position: relative;
     margin-inline: auto;
     background: theme(bg, secondary);
@@ -30,12 +30,11 @@
         z-index: -1;
         border-radius: 50%;
         opacity: 0.5;
-        animation: pulseOpacity 4s ease-in-out infinite;
         filter: blur(d-vw(80));
     }
 
     &::before {
-        background: theme(brand, primary);
+        background: rgba(theme(brand, primary),0.6);
         width: d-vw(250);
         height: d-vw(250);
         top: d-vw(-75);

@@ -1,0 +1,11 @@
+@use "../../../abstracts" as *;
+
+.tooltip {
+	background-color: theme(bg, tooltip);
+	color: theme(text, secondary);
+	font-size: theme(typography, font-size, sm);
+	border-radius: theme(radius, sm);
+	padding: theme(spacing, xs) theme(spacing, sm);
+	box-shadow: theme(shadow, sm);
+	z-index: theme(z, tooltip);
+}
