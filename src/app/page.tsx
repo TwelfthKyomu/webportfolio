@@ -4,7 +4,6 @@ import Menu from 'components/Menu';
 import Divider from 'components/ui/Divider';
 
 import Profile from '../components/Profile';
-import Projects from '../components/Projects';
 
 const Home = () => {
     return (
@@ -12,7 +11,6 @@ const Home = () => {
             <Profile />
             <Divider />
             <Menu />
-            <Projects />
         </main>
     );
 };

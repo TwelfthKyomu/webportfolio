@@ -1,4 +1,5 @@
-import { iconMap, IconNameT } from "types/components/Icon/type";
+import type { IconNameT } from "types/components/Icon/type";
+import { iconMap } from "types/components/Icon/type";
 
 type SVGProps = {
 	name: IconNameT;
