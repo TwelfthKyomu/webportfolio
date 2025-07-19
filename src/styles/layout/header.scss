@@ -1,19 +1,31 @@
-.header {
-    margin-bottom: d-vw(32);
+@use "../abstracts" as *;
+
+@keyframes header {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(0);
+	}
 }
 
-.header__nav {
-    user-select: none;
+header {
+	margin-bottom: d-vw(32);
+}
+
+nav {
+	user-select: none;
 	display: flex;
+	justify-content: center;
 	gap: d-vw(8);
 	padding-block: d-vw(8);
-	justify-content: center;
 
 	a {
-		padding: d-vw(8) d-vw(16);
 		text-transform: uppercase;
+		padding: d-vw(8) d-vw(16);
 
-        @include body-small;
+		@include animate(transition, default);
+		@include body-small;
 
 		&::after {
 			display: block;
@@ -24,7 +36,7 @@
 			transform: scaleX(0);
 			transform-origin: right;
 
-			@include animate(transform, normal);
+			@include animate(transform);
 		}
 
 		&:hover::after {
@@ -32,14 +44,14 @@
 			transform: scaleX(1);
 		}
 
-        &.active {
-            pointer-events: none;
-            color: theme(state, active, brand);
+		&.active {
+			pointer-events: none;
+			color: theme(state, active, brand);
 
-            &::after {
-                background: currentColor;
-                transform: scaleX(1);
-            }
-        }
+			&::after {
+				background: currentColor;
+				transform: scaleX(1);
+			}
+		}
 	}
 }

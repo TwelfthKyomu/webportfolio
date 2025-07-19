@@ -1,0 +1,198 @@
+@use "functions" as *;
+
+$theme: (
+	bg: (
+		primary: #0A0A0B,
+		secondary: #121214,
+		tertiary: #18181B,
+		elevated: #1E1E21,
+		card: #27272A,
+		modal: #2D2D30,
+		tooltip: #333336,
+		translucent: rgba(24, 24, 27, 0.6),
+		translucent-hover: rgba(24, 24, 27, 0.75),
+		surface: (
+			base: #0A0A0B,
+			alt: #121214,
+			overlay: rgba(18, 18, 20, 0.95)
+		)
+	),
+	text: (
+		primary: #FFFFFF,
+		secondary: #A1A1AA,
+		tertiary: #71717A,
+		disabled: #52525B,
+		inverse: #18181B,
+		link: #818CF8,
+		visited: #C084FC,
+		code: #E879F9,
+		highlight: #F472B6,
+		on-brand: #FFFFFF
+	),
+	brand: (
+		primary: #7C3AED,
+		secondary: #C084FC,
+		accent: #F472B6,
+		highlight: #22D3EE,
+		muted: rgba(129, 140, 248, 0.1)
+	),
+	status: (
+		info: #38BDF8,
+		warning: #FACC15,
+		success: #22C55E,
+		error: #EF4444,
+		neutral: #94A3B8,
+		disabled: #52525B
+	),
+	border: (
+		light: rgba(255, 255, 255, 0.1),
+		medium: rgba(255, 255, 255, 0.15),
+		strong: rgba(255, 255, 255, 0.2),
+		brand: rgba(129, 140, 248, 0.4),
+		focus: #818CF8,
+		inverse: rgba(0, 0, 0, 0.1)
+	),
+	state: (
+		hover: (
+			bg: #27272A,
+			text: #FFFFFF,
+			brand: #6366F1,
+			border: rgba(255, 255, 255, 0.2)
+		),
+		active: (
+			bg: #2D2D30,
+			text: #FFFFFF,
+			brand: #4F46E5,
+			border: rgba(255, 255, 255, 0.25)
+		),
+		focus: (
+			ring: rgba(129, 140, 248, 0.5),
+			border: #818CF8
+		),
+		disabled: (
+			bg: #27272A,
+			text: #52525B,
+			border: rgba(255, 255, 255, 0.1),
+			opacity: 0.6
+		)
+	),
+	overlay: (
+		light: rgba(0, 0, 0, 0.3),
+		medium: rgba(0, 0, 0, 0.5),
+		heavy: rgba(0, 0, 0, 0.7),
+		blur: rgba(0, 0, 0, 0.8),
+		brand: rgba(129, 140, 248, 0.2)
+	),
+	shadow: (
+		xs: 0 1px 1px rgba(0, 0, 0, 0.1),
+		sm: 0 1px 2px rgba(0, 0, 0, 0.3),
+		md: 0 4px 6px -1px rgba(0, 0, 0, 0.4),
+		lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5),
+		xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6),
+		inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+		focus: 0 0 0 3px rgba(129, 140, 248, 0.5),
+		focus-shadow: 0 0 6px 3px rgba(129, 140, 248, 0.5)
+	),
+	gradient: (
+		primary: linear-gradient(135deg, #818CF8 0%, #C084FC 100%),
+		secondary: linear-gradient(135deg, #F472B6 0%, #FB7185 100%),
+		dark: linear-gradient(180deg, #0A0A0B 0%, #18181B 100%),
+		overlay: linear-gradient(180deg, rgba(10, 10, 11, 0.8) 0%, rgba(24, 24, 27, 0.6) 100%)
+	),
+	effects: (
+		glass: rgba(24, 24, 27, 0.7),
+		glass-border: rgba(255, 255, 255, 0.1),
+		backdrop-blur: blur(8px),
+		backdrop-brightness: brightness(0.8)
+	),
+	z: (
+		auto: auto,
+		base: 1,
+		dropdown: 10,
+		sticky: 20,
+		banner: 25,
+		modal: 30,
+		popover: 35,
+		tooltip: 40,
+		toast: 50,
+		max: 9999
+	),
+	size: (
+		xs: d-vw(16),
+		sm: d-vw(24),
+		md: d-vw(32),
+		lg: d-vw(48),
+		xl: d-vw(64),
+		2xl: d-vw(80)
+	),
+	radius: (
+		none: 0,
+		xs: d-vw(2),
+		sm: d-vw(4),
+		base: d-vw(8),
+		lg: d-vw(16),
+		xl: d-vw(24),
+		full: d-vw(9999),
+		circle: 50%
+	),
+	opacity: (
+		disabled: 0.5,
+		hover: 0.8,
+		active: 1,
+		hidden: 0,
+		visible: 1
+	),
+	spacing: (
+		0: 0,
+		px: 1px,
+		xs: d-vw(4),
+		sm: d-vw(8),
+		md: d-vw(16),
+		lg: d-vw(24),
+		xl: d-vw(32),
+		2xl: d-vw(48),
+		3xl: d-vw(64)
+	),
+	typography: (
+		font-family: (
+			base: "'Inter', sans-serif",
+			mono: "'JetBrains Mono', monospace",
+			alt: "'Manrope', sans-serif"
+		),
+		font-size: (
+			xxs: d-vw(8),
+			xs: d-vw(12),
+			sm: d-vw(14),
+			base: d-vw(16),
+			lg: d-vw(18),
+			xl: d-vw(20),
+			2xl: d-vw(24),
+			3xl: d-vw(30)
+		),
+		line-height: (
+			tight: 1.1,
+			snug: 1.3,
+			normal: 1.5,
+			relaxed: 1.7
+		),
+		font-weight: (
+			light: 300,
+			normal: 400,
+			medium: 500,
+			semibold: 600,
+			bold: 700
+		)
+	)
+);
+
+// Animation speeds
+$transition-slower: 0.5s;
+$transition-slow: 0.3s;
+$transition-normal: 0.2s;
+$transition-fast: 0.1s;
+
+// Animation easing
+$ease-default: ease;
+$ease-in-out: ease-in-out;
+$ease-in: ease-in;
+$ease-out: ease-out;

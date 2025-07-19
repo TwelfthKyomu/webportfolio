@@ -1,4 +1,7 @@
-@import "profile/style";
-@import "menuButton/style";
-@import "projects/style";
-@import "commercialForm/style";
+@use "menuButton";
+@use "profile";
+@use "ui";
+@use "update";
+@use "statsGrid";
+@use "statsBar";
+@use "projects";

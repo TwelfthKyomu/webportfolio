@@ -1,22 +1,3 @@
-@mixin animate($properties...) {
-	$duration: $transition-normal;
-	$timing: $ease-default;
-
-	@if length($properties) >= 2 {
-		@if nth($properties, 2) == slower {
-			$duration: $transition-slower;
-		} @else if nth($properties, 2) == slow {
-			$duration: $transition-slow;
-		} @else if nth($properties, 2) == fast {
-			$duration: $transition-fast;
-		}
-	}
-
-	transition-property: nth($properties, 1);
-	transition-duration: $duration;
-	transition-timing-function: $timing;
-}
-
 @mixin mobile {
     @media (max-width: 767px) {
         @content;

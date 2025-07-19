@@ -1,0 +1,66 @@
+@use "../../abstracts" as *;
+
+.update {
+	display: flex;
+	flex-direction: column;
+	gap: d-vw(20);
+}
+
+.update__content {
+	position: relative;
+	overflow: hidden;
+	background-color: rgba(theme(bg, tertiary), 0.8);
+	border-radius: theme(radius, lg);
+	padding: theme(spacing, lg);
+	box-shadow: theme(shadow, sm);
+
+	@include animate(box-shadow);
+
+	&:hover {
+		box-shadow: theme(shadow, md);
+	}
+
+	.divider {
+		margin-block: d-vw(10);
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background: linear-gradient(180deg, rgba(10, 10, 11, 1) 0%, rgba(24, 24, 27, 0.3) 100%);
+		transform: rotate(180deg);
+		backdrop-filter: blur(2px);
+		height: d-vw(40);
+	}
+}
+
+.update__title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	h3 {
+		font-size: theme(typography, font-size, sm);
+		font-weight: theme(typography, font-weight, bold);
+	}
+
+	span {
+		color: theme(text, secondary);
+		border-radius: theme(radius, sm);
+		font-size: theme(typography, font-size, xss);
+	}
+}
+
+.update__description {
+	font-size: theme(typography, font-size, xs);
+	margin: d-vw(20);
+	height: d-vw(60);
+
+	li {
+		list-style-type: disc;
+		list-style-position: inside;
+	}
+}

@@ -1,25 +1,23 @@
-import { NextConfig } from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	images: {
-		domains: ['dannis.ru'],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'dannis.ru',
+			},
+		],
 	},
-	i18n: {
-		locales: ['en', 'ru'],
-		defaultLocale: 'ru',
-	},
-	webpack: (config, {isServer}) => {
-		if (!isServer) {
-			config.resolve.fallback = {
-				fs: false,
-				path: false,
-				os: false,
-			};
-		}
+	webpack(config) {
+		config.module.rules.push({
+			test: /\.svg$/,
+			use: ['@svgr/webpack']
+		});
 
 		return config;
-	},
+	}
 };
 
 export default nextConfig;

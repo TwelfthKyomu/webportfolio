@@ -1,0 +1,44 @@
+@use "../../abstracts" as *;
+
+.menu {
+	border-top: 1px solid theme(border, light);
+	padding-block: d-vw(4);
+	margin-bottom: d-vw(24);
+}
+
+.menu__list {
+	display: flex;
+	justify-content: center;
+}
+
+.menu__item {
+	cursor: pointer;
+	color: theme(text, secondary);
+	padding: d-vw(4) d-vw(12);
+
+	@include body-large;
+
+	&::after {
+		user-select: none;
+		content: '';
+		display: block;
+		width: 0;
+		height: 1px;
+		background: currentColor;
+
+		@include animate(width);
+	}
+
+	&:hover::after {
+		width: 100%;
+	}
+
+	&--active {
+		pointer-events: none;
+		color: theme(text, primary);
+
+		&::after {
+			width: 100%;
+		}
+	}
+}

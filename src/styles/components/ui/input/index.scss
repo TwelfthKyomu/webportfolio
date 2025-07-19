@@ -1,0 +1,26 @@
+@use "../../../abstracts" as *;
+
+.input {
+	width: 100%;
+	padding: theme(spacing, sm);
+	background-color: theme(bg, elevated);
+	color: theme(text, primary);
+	border: 1px solid theme(border, medium);
+	border-radius: theme(radius, sm);
+	font-family: theme(typography, font-family, base), serif;
+	font-size: theme(typography, font-size, base);
+	//transition.svg: all map-get($animations, duration, base) map-get($animations, timing, smooth);
+
+	&:focus {
+		border-color: theme(state, focus, border);
+		box-shadow: theme(shadow, focus);
+		outline: none;
+	}
+
+	&:disabled {
+		background-color: theme(state, disabled, bg);
+		color: theme(state, disabled, text);
+		cursor: not-allowed;
+		opacity: theme(opacity, disabled);
+	}
+}

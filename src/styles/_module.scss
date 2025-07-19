@@ -1,9 +1,8 @@
-@import "fonts";
-@import "colors";
-@import "functions";
-@import "abstracts/module";
-@import "reset";
-@import "global";
+@use "global";
+@use "reset";
 
-@import "layout/module";
-@import "components/module";
+@use "@/styles/components/module";
+
+@use "@/styles/layout/header";
+@use "@/styles/layout/main";
+@use "@/styles/layout/footer";

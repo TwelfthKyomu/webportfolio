@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const Header: React.FC = () => {
+import Link from "components/ui/Link";
+
+const Header: FC = () => {
 	return (
-		<header className="header">
-			<nav className="header__nav">
-				<a className="active" href="/public">Главная</a>
-				<a href="/public">Проекты</a>
+		<header>
+			<nav>
+				<Link href="/">Главная</Link>
+				<Link href="/public">Проекты</Link>
 			</nav>
 		</header>
 	);

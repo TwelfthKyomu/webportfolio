@@ -1,0 +1,11 @@
+@use "../../../abstracts" as *;
+
+.modal {
+	background-color: theme(bg, modal);
+	border-radius: theme(radius, xl);
+	box-shadow: theme(shadow, xl);
+	padding: theme(spacing, xl);
+	backdrop-filter: theme(effects, backdrop-blur);
+	border: 1px solid theme(effects, glass-border);
+	z-index: theme(z, modal);
+}

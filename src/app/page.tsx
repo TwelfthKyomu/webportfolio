@@ -1,11 +1,22 @@
-import Main from "@/app/layout/Main";
+import React from 'react';
+
+import { ProjectProvider } from '@/сontext/ProjectContext';
+import Menu from 'components/Menu';
+import Profile from 'components/Profile';
+import Projects from 'components/Projects';
+import Divider from 'components/ui/Divider';
 
 const Home = () => {
-	return (
-		<main className='main'>
-			<Main/>
-		</main>
-	);
-}
+    return (
+        <main>
+            <Profile />
+            <Divider />
+            <ProjectProvider>
+                <Menu />
+                <Projects/>
+            </ProjectProvider>
+        </main>
+    );
+};
 
 export default Home;
