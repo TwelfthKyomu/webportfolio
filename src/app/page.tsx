@@ -1,16 +1,20 @@
 import React from 'react';
 
+import { ProjectProvider } from '@/сontext/ProjectContext';
 import Menu from 'components/Menu';
+import Profile from 'components/Profile';
+import Projects from 'components/Projects';
 import Divider from 'components/ui/Divider';
-
-import Profile from '../components/Profile';
 
 const Home = () => {
     return (
         <main>
             <Profile />
             <Divider />
-            <Menu />
+            <ProjectProvider>
+                <Menu />
+                <Projects/>
+            </ProjectProvider>
         </main>
     );
 };

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import React from 'react';
+import React, { ReactNode, StrictMode } from 'react';
 
 import Footer from '@/app/layout/Footer';
 import Header from '@/app/layout/Header';
@@ -10,15 +10,15 @@ export const metadata: Metadata = {
     description: 'Portfolio',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
     return (
         <html lang="ru">
             <body>
-                <React.StrictMode>
+                <StrictMode>
                     <Header />
                     { children }
                     <Footer />
-                </React.StrictMode>
+                </StrictMode>
             </body>
         </html>
     );

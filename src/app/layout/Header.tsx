@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import Link from "components/ui/Link";
 
-const Header: React.FC = () => {
+const Header: FC = () => {
 	return (
 		<header>
 			<nav>

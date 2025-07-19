@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import type { AnchorHTMLAttributes, FC } from 'react';
 
 import SVG from '@/lib/SVG';
-import type { IconNameT } from 'types/components/Icon/type';
+import type { IconNameT } from 'types/Icon/type';
 
 export type LinkT = {
     startAdornment?: IconNameT;

@@ -6,20 +6,23 @@
     }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .profile {
     user-select: none;
     display: flex;
-	align-items: center;
+    align-items: center;
     gap: d-vw(24);
     margin-bottom: d-vw(24);
-
-	h1 {
-		font-size: d-vw(40);
-	}
-
-	h2 {
-		position: absolute;
-	}
 }
 
 .profile__avatar {
@@ -35,15 +38,15 @@
         inset: 0;
         padding: d-vw(2);
         background: conic-gradient(
-                from 0deg,
-                theme(brand, primary),
-                theme(brand, secondary),
-                theme(brand, accent),
-                theme(brand, primary)
+            from 0deg,
+            theme(brand, primary),
+            theme(brand, secondary),
+            theme(brand, accent),
+            theme(brand, primary)
         );
         border-radius: 50%;
         mask: linear-gradient(to bottom, #fff 0%, #fff 100%) content-box,
-        linear-gradient(to bottom, #fff 0%, #fff 100%);
+            linear-gradient(to bottom, #fff 0%, #fff 100%);
         mask-composite: exclude;
         animation: rotate 10s linear infinite;
     }
@@ -54,7 +57,4 @@
         height: 100%;
         object-fit: cover;
     }
-}
-
-.profile__name {
 }

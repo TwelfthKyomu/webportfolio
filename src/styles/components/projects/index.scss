@@ -1,0 +1,141 @@
+@use '../../abstracts' as *;
+
+.projects {
+	display: grid;
+	gap: d-vw(12);
+	grid-template-columns: repeat(2, 1fr);
+	min-height: d-vw(240);
+}
+
+.project {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: auto 1fr auto;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	background: theme(bg, card);
+	border: 1px solid theme(border, light);
+	backdrop-filter: theme(effects, backdrop-blur);
+	box-shadow: theme(shadow, sm);
+	padding: d-vw(16);
+	border-radius: d-vw(12);
+	min-height: d-vw(240);
+	gap: d-vw(8);
+	opacity: 0;
+
+	@include animate((transform, box-shadow, border-color), base);
+
+	&:hover {
+		box-shadow: theme(shadow, lg);
+		border-color: theme(border, medium);
+
+		.project__image {
+			transform: scale(1.05);
+		}
+	}
+
+	@for $i from 0 through 4 {
+		&.project-#{$i} {
+			animation: animateProject 1s #{$i * 0.5}s forwards;
+		}
+	}
+}
+
+@keyframes animateProject {
+	0% {
+		scale: .5;
+	}
+	1% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 1;
+		scale: 1;
+	}
+}
+
+.project__image {
+	z-index: -1;
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	filter: brightness(0.4) theme(effects, backdrop-blur);
+
+	@include animate-custom((filter, transform), base);
+}
+
+
+.project__title {
+	color: theme(text, primary);
+	position: relative;
+	z-index: 1;
+
+	@include h3;
+}
+
+.project__subtitle {
+	opacity: 0.8;
+	user-select: none;
+	grid-column: 1 / -1;
+	position: relative;
+	z-index: 1;
+	color: theme(text, secondary);
+
+	@include caption;
+}
+
+.project__technologies {
+	display: flex;
+	justify-content: space-around;
+	gap: d-vw(16);
+	position: relative;
+	z-index: 1;
+
+	li {
+		cursor: pointer;
+		position: relative;
+		color: theme(text, secondary);
+
+		span {
+			@include body;
+		}
+	}
+}
+
+.project__link {
+	width: fit-content;
+	height: fit-content;
+	border-radius: 50%;
+	position: relative;
+	z-index: 1;
+	background: theme(bg, elevated);
+	border: 1px solid theme(border, light);
+	backdrop-filter: theme(effects, backdrop-blur);
+	padding: d-vw(8);
+
+	@include animate-custom((background, border-color, transform), slow);
+
+	&:hover {
+		background: theme(brand, primary);
+
+		svg {
+			fill: theme(text, inverse);
+		}
+	}
+
+	svg {
+		width: d-vw(18);
+		height: auto;
+		display: block;
+		position: relative;
+		left: -1px;
+		fill: theme(brand, primary);
+
+		@include animate(fill);
+	}
+}

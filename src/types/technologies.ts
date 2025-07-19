@@ -1,3 +1,4 @@
+
 export type TechnologiesData = {
     frontend: {
         frameworks: string[];

@@ -1,5 +1,5 @@
-'use client'
-import { Children, cloneElement, FC, isValidElement, memo, ReactElement, ReactNode } from 'react';
+import type { FC, ReactElement, ReactNode } from 'react';
+import { Children, cloneElement, isValidElement, memo } from 'react';
 
 import styles from './Skeleton.module.scss';
 

@@ -1,0 +1,32 @@
+@use "../../abstracts" as *;
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: d-vw(12);
+    margin-bottom: d-vw(24);
+}
+
+.stats-grid__item {
+    background: theme(bg, secondary);
+    border: 1px solid theme(border, light);
+    border-radius: d-vw(12);
+    padding: d-vw(16);
+    text-align: center;
+}
+
+.stats-grid__number {
+    color: theme(brand, primary);
+    font-weight: bold;
+    margin-bottom: d-vw(4);
+
+    @include h2;
+}
+
+.stats-grid__label {
+    color: theme(text, secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @include caption;
+}

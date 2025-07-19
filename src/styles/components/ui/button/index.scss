@@ -1,4 +1,4 @@
-@use "../../../abstracts" as *;
+@use "@/styles/abstracts" as *;
 
 .button {
 	padding: theme(spacing, sm) theme(spacing, md);
@@ -8,7 +8,7 @@
 	border-radius: theme(radius, base);
 	font-weight: theme(typography, font-weight, medium);
 
-	@include animate-all();
+	// @include animate-all();
 
 	&:hover {
 		background-color: theme(state, hover, brand);

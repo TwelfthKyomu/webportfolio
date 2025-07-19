@@ -1,7 +1,18 @@
-import { MenuItems } from "@/constants/menu";
-import { RepositoryT } from "types/github";
-import { CommercialProjectT } from "types/project.types";
-import { UpdatesT } from "types/updates";
+import type { MenuItems } from "@/constants/menu";
+import type { UpdatesT } from "types/updates";
+
+export type RepositoryT = {
+    id: number;
+    name: string;
+    description: string | null;
+    htmlUrl: string | null;
+    language: string | null;
+    source: 'github';
+    imagePath: string | null;
+    technologies: string[];
+    createdAt: Date;
+    updatedAt: Date;
+}
 
 export type ProjectT = {
     repositories: RepositoryT[];
@@ -17,3 +28,14 @@ export type ProjectContextType = {
 	handleFilterChange: (filterId: MenuItems) => void;
 	filteredProjects: (RepositoryT | CommercialProjectT | UpdatesT)[];
 };
+
+export type CommercialProjectT = {
+    id: number;
+    name: string;
+    description: string;
+    imagePath: string | null;
+    technologies: string[];
+    htmlUrl?: string;
+    createdAt: Date;
+    updatedAt: Date;
+}

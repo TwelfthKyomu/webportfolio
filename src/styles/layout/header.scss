@@ -16,14 +16,15 @@ header {
 nav {
 	user-select: none;
 	display: flex;
+	justify-content: center;
 	gap: d-vw(8);
 	padding-block: d-vw(8);
-	justify-content: center;
 
 	a {
-		padding: d-vw(8) d-vw(16);
 		text-transform: uppercase;
+		padding: d-vw(8) d-vw(16);
 
+		@include animate(transition, default);
 		@include body-small;
 
 		&::after {

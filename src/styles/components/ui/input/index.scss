@@ -9,7 +9,7 @@
 	border-radius: theme(radius, sm);
 	font-family: theme(typography, font-family, base), serif;
 	font-size: theme(typography, font-size, base);
-	//transition: all map-get($animations, duration, base) map-get($animations, timing, smooth);
+	//transition.svg: all map-get($animations, duration, base) map-get($animations, timing, smooth);
 
 	&:focus {
 		border-color: theme(state, focus, border);

@@ -24,14 +24,12 @@ $font-weights: (
   @return map.get($font-weights, $weight-name);
 }
 
-// Базовые текстовые стили
 %text-base {
   font-family: $font-nunito;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Миксины для типографики
 @mixin h1 {
   @extend %text-base;
   font-weight: font-weight('bold');
