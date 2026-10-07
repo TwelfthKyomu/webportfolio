@@ -1,0 +1,67 @@
+@mixin caption($size: 11px, $weight: 400, $color: var(--color-text-muted)) {
+    font: $weight #{$size}/ 1.4 var(--font-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $color;
+}
+
+@mixin scroll-stretch {
+    scale: 1 var(--scroll-stretch, 1);
+    transform-origin: 0 100%;
+    contain: layout style;
+}
+
+@mixin fade-up($duration, $delay) {
+    animation: fade-up $duration var(--ease) calc(var(--intro-delay) + #{$delay}) both;
+}
+
+@mixin scroll-animation($name, $range: entry 0% entry 100%) {
+    @supports (animation-timeline: view()) {
+        animation: $name linear both;
+        animation-timeline: view();
+        animation-range: $range;
+    }
+}
+
+@mixin keyframes($names...) {
+    @each $name in $names {
+        @if $name == fade-up {
+            @keyframes fade-up {
+                from {
+                    opacity: 0;
+                    translate: 0 16px;
+                }
+            }
+        } @else if $name == title-in {
+            @keyframes title-in {
+                from {
+                    clip-path: inset(0 0 100% 0);
+                    translate: 0 35%;
+                }
+
+                to {
+                    clip-path: inset(-30% -5% -25% -5%);
+                }
+            }
+        } @else if $name == word-in {
+            @keyframes word-in {
+                from {
+                    opacity: 0;
+                    translate: 0 45%;
+                }
+            }
+        }
+    }
+}
+
+@mixin dark-theme {
+    :global(:root[data-theme='dark']) & {
+        @content;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :global(:root:not([data-theme='light'])) & {
+            @content;
+        }
+    }
+}

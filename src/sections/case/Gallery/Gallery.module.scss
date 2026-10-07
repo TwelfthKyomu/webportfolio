@@ -1,0 +1,6 @@
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(560px, 100%), 1fr));
+    gap: clamp(16px, 2vw, 28px);
+    padding-top: clamp(64px, 7vw, 110px);
+}

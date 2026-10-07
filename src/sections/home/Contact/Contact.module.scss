@@ -1,0 +1,77 @@
+@use '@/styles/mixins' as *;
+
+@include keyframes(word-in);
+
+.contact {
+    padding-bottom: 0;
+}
+
+.callToAction {
+    font: 300 clamp(48px, 11.5vw, 200px) / 0.92 var(--font-display);
+    letter-spacing: -0.05em;
+    @include scroll-stretch;
+    @include scroll-animation(word-in, entry 0% cover 40%);
+}
+
+.subtitle {
+    max-width: 40ch;
+    margin: 22px 0 0;
+    font-size: clamp(16px, 1.3vw, 20px);
+    color: var(--color-text-muted);
+}
+
+.links {
+    margin: clamp(48px, 6vw, 80px) 0 0;
+    border-top: 1px solid var(--color-text);
+
+    li {
+        border-bottom: 1px solid var(--color-text);
+    }
+}
+
+.link {
+    display: grid;
+    grid-template-columns: minmax(110px, 1fr) minmax(0, 3fr) auto;
+    align-items: center;
+    gap: 12px 24px;
+    padding: 22px 12px;
+    background: linear-gradient(var(--color-accent), var(--color-accent)) 0 0 / 0 100% no-repeat;
+    transition: background-size 0.6s var(--ease);
+
+    svg {
+        transition: rotate 0.45s var(--ease);
+    }
+
+    &:hover,
+    &:focus-visible {
+        background-size: 100% 100%;
+        color: #0d0e10;
+
+        svg {
+            rotate: 45deg;
+        }
+    }
+
+    @media (max-width: 700px) {
+        grid-template-columns: minmax(0, 1fr) auto;
+        padding: 18px 4px;
+    }
+}
+
+.label {
+    @include caption($weight: 500, $color: null);
+
+    @media (max-width: 700px) {
+        grid-column: 1 / -1;
+    }
+}
+
+.value {
+    font: 600 clamp(22px, 2.6vw, 40px) / 1.1 var(--font-display);
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+}
+
+.footer {
+    margin-top: clamp(80px, 10vw, 140px);
+}

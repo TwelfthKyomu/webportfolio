@@ -1,0 +1,70 @@
+@use 'sass:list';
+
+.admin {
+    display: grid;
+    grid-template-columns: 22% minmax(0, 1fr);
+    gap: 10px;
+    min-width: 0;
+    min-height: 0;
+}
+
+.fullWidth {
+    grid-template-columns: 20% minmax(0, 1fr);
+}
+
+.sidebar,
+.toolbar {
+    border-radius: 4px;
+    background: #1b1d21;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 12px;
+
+    span {
+        height: 7px;
+        background: #34373d;
+
+        $widths: 62% 100% 80% 70% 88% 64%;
+        @for $i from 1 through list.length($widths) {
+            &:nth-child(#{$i}) {
+                width: list.nth($widths, $i);
+            }
+        }
+
+        &:first-child {
+            height: 12px;
+            margin-bottom: 14px;
+            background: var(--color-accent);
+        }
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+
+    span {
+        width: 32%;
+        height: 9px;
+        background: #34373d;
+
+        &:last-child {
+            width: 14%;
+            height: 14px;
+            background: #ecedea;
+        }
+    }
+}

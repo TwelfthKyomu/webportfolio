@@ -1,0 +1,15 @@
+.word {
+    display: inline-grid;
+    white-space: nowrap;
+
+    &::before,
+    > span {
+        grid-area: 1 / 1;
+    }
+
+    &::before {
+        content: attr(data-text);
+        font-weight: 800;
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,37 @@
+@use '@/styles/mixins' as *;
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+    padding-block: 12px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 0;
+    font: 600 15px/1 var(--font-body);
+
+    svg {
+        transition: translate 0.4s var(--ease);
+    }
+
+    &:hover svg {
+        translate: -5px 0;
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.counter {
+    @include caption;
+}

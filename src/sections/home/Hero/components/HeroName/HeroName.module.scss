@@ -1,0 +1,62 @@
+@use '@/styles/mixins' as *;
+
+@include keyframes(fade-up);
+
+@keyframes letter-rise {
+    from {
+        translate: 0 108%;
+    }
+}
+
+.name {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: clamp(10px, 1.4vw, 22px) 0 0;
+    font: 300 clamp(64px, 20vw, 340px) / 0.86 var(--font-display);
+    letter-spacing: -0.04em;
+    @include scroll-stretch;
+}
+
+.letter {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1vw, 12px);
+
+    @for $i from 1 through 5 {
+        &:nth-child(#{$i}) .glyph {
+            animation-delay: calc(var(--intro-delay) + #{0.12 + $i * 0.08}s);
+        }
+    }
+}
+
+.mask {
+    clip-path: inset(-40% -12% 0 -12%);
+}
+
+.glyph {
+    display: block;
+    animation: letter-rise 1.25s cubic-bezier(0.2, 0.85, 0.1, 1) both;
+}
+
+.weightMeter {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font: 400 clamp(9px, 1vw, 10px) / 1 var(--font-mono);
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    counter-reset: letter-weight var(--letter-weight, 300);
+    @include fade-up(0.8s, 1.3s);
+
+    &::before {
+        content: '';
+        width: calc(4px + var(--letter-heat, 0.14) * (100% - 4px));
+        height: 2px;
+        background: var(--color-accent);
+    }
+
+    &::after {
+        content: 'wght ' counter(letter-weight);
+    }
+}

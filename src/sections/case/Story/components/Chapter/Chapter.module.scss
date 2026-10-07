@@ -1,0 +1,45 @@
+@use '@/styles/mixins' as *;
+
+@include keyframes(title-in);
+
+.chapter {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 24px clamp(32px, 5vw, 80px);
+    padding: clamp(40px, 5vw, 64px) 0;
+    border-top: 1px solid var(--color-text);
+
+    @media (max-width: 800px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    span {
+        font: 500 12px/1 var(--font-mono);
+        color: var(--color-text-muted);
+    }
+
+    h2 {
+        font: 600 clamp(30px, 3.4vw, 52px) / 1 var(--font-display);
+        letter-spacing: -0.035em;
+        @include scroll-animation(title-in);
+    }
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-width: 0;
+
+    > p {
+        max-width: 52ch;
+        font-size: clamp(17px, 1.35vw, 20px);
+        text-wrap: pretty;
+    }
+}

@@ -1,0 +1,79 @@
+@use 'sass:list';
+
+@keyframes bar-grow {
+    from {
+        transform: scaleY(0.06);
+    }
+}
+
+.dashboard {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 10px;
+    min-width: 0;
+    min-height: 0;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.metric,
+.chart {
+    border-radius: 4px;
+    background: var(--color-screen);
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 12px;
+
+    span {
+        width: 46%;
+        height: 5px;
+
+        &:last-child {
+            width: 68%;
+            height: 15px;
+            background: #ecedea;
+        }
+    }
+}
+
+.chart {
+    display: grid;
+    grid-template: minmax(0, 1fr) / repeat(12, minmax(0, 1fr));
+    align-items: end;
+    gap: 7px;
+    padding: 16px;
+
+    span {
+        border-radius: 2px 2px 0 0;
+        transform-origin: 50% 100%;
+
+        $heights: 28 42 36 58 50 66 61 78 70 86 80 96;
+        @for $i from 1 through list.length($heights) {
+            &:nth-child(#{$i}) {
+                height: list.nth($heights, $i) * 1%;
+            }
+        }
+
+        &:nth-child(11) {
+            background: #ecedea;
+        }
+
+        &:nth-child(12) {
+            background: var(--color-accent);
+        }
+
+        @supports (animation-timeline: view()) {
+            animation: bar-grow linear both;
+            animation-timeline: view();
+            animation-range: entry 20% cover 45%;
+        }
+    }
+}

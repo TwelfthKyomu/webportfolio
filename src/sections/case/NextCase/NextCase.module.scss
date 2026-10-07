@@ -1,0 +1,40 @@
+@use '@/styles/mixins' as *;
+
+.nextCase {
+    display: block;
+    margin-top: clamp(96px, 11vw, 160px);
+    padding: clamp(36px, 4.6vw, 60px) 0;
+    border-top: 1px solid var(--color-text);
+
+    &:hover svg {
+        translate: 14px 0;
+    }
+}
+
+.kicker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    @include caption(12px, 500);
+}
+
+.title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin-top: 18px;
+    font: 300 clamp(48px, 10vw, 180px) / 0.9 var(--font-display);
+    letter-spacing: -0.05em;
+    @include scroll-stretch;
+
+    svg {
+        width: clamp(40px, 7vw, 120px);
+        height: auto;
+        stroke-width: 1.2;
+        color: var(--color-accent);
+        transition: translate 0.6s var(--ease);
+    }
+}

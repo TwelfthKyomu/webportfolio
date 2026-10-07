@@ -1,0 +1,61 @@
+@use '@/styles/mixins' as *;
+
+@include keyframes(fade-up);
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 32px;
+    padding-top: 16px;
+    @include fade-up(0.9s, 0.15s);
+}
+
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 28px;
+
+    @media (max-width: 700px) {
+        order: 3;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0 12px;
+    }
+}
+
+.link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 7px;
+    padding: 14px 0;
+    font: 500 15px/1.15 var(--font-body);
+
+    small {
+        font: 500 10px/1 var(--font-mono);
+        color: var(--color-text-muted);
+    }
+
+    &:hover .roll > span,
+    &:focus-visible .roll > span {
+        translate: 0 -100%;
+    }
+}
+
+.roll {
+    display: inline-block;
+    height: 1.15em;
+    overflow: hidden;
+    vertical-align: bottom;
+
+    > span {
+        display: block;
+        transition: translate 0.55s var(--ease);
+
+        &::after {
+            content: attr(data-text);
+            display: block;
+        }
+    }
+}

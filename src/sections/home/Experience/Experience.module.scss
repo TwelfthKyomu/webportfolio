@@ -1,0 +1,112 @@
+@use '@/styles/mixins' as *;
+
+@keyframes grow {
+    from {
+        scale: 1 0;
+    }
+}
+
+@keyframes dot-on {
+    from {
+        scale: 0.7;
+    }
+
+    to {
+        background: var(--color-accent);
+    }
+}
+
+.list {
+    position: relative;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0 auto 0 7px;
+        width: 1px;
+        background: var(--color-border);
+    }
+
+    &::after {
+        background: var(--color-accent);
+        transform-origin: 50% 0;
+        @include scroll-animation(grow, cover 10% cover 60%);
+    }
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 15px minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 14px clamp(20px, 3vw, 48px);
+    align-items: start;
+    padding: clamp(28px, 3.4vw, 44px) 0;
+    border-bottom: 1px solid var(--color-border);
+
+    &::before {
+        content: '';
+        position: relative;
+        z-index: 1;
+        height: 15px;
+        margin-top: 0.5em;
+        border: 1.5px solid var(--color-accent);
+        border-radius: 50%;
+        background: var(--color-background);
+    }
+
+    &:first-child::before {
+        background: var(--color-accent);
+    }
+
+    &:not(:first-child)::before {
+        @include scroll-animation(dot-on, cover 38% cover 46%);
+    }
+
+    @media (max-width: 900px) {
+        grid-template-columns: 15px minmax(0, 1fr);
+
+        > * {
+            grid-column: 2;
+        }
+
+        &::before {
+            grid-row: 1 / span 3;
+        }
+    }
+}
+
+.years {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.3em;
+    font: 300 clamp(24px, 2.4vw, 36px) / 1.05 var(--font-display);
+    letter-spacing: -0.03em;
+}
+
+.separator {
+    color: var(--color-accent);
+}
+
+.company {
+    font: 600 clamp(20px, 1.8vw, 26px) / 1.15 var(--font-display);
+    letter-spacing: -0.02em;
+}
+
+.role {
+    margin: 8px 0 0;
+    @include caption;
+}
+
+.description {
+    max-width: 46ch;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+}
+
+.stack {
+    display: block;
+    margin-top: 12px;
+    font: 400 12px/1.6 var(--font-mono);
+    color: var(--color-text);
+}

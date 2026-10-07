@@ -1,0 +1,42 @@
+@use '@/styles/mixins' as *;
+
+@include keyframes(fade-up);
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    margin-top: clamp(40px, 7vw, 96px);
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+    @include caption;
+    @include fade-up(0.9s, 0.2s);
+}
+
+.bottom {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+    gap: 28px clamp(24px, 4vw, 64px);
+    align-items: start;
+    margin-top: clamp(32px, 4vw, 56px);
+    padding-bottom: clamp(56px, 7vw, 104px);
+    @include fade-up(1s, 0.8s);
+}
+
+.role {
+    font: 500 clamp(22px, 2.1vw, 30px) / 1.12 var(--font-display);
+    letter-spacing: -0.02em;
+}
+
+.summary {
+    max-width: 38ch;
+    font-size: clamp(16px, 1.2vw, 18px);
+    text-wrap: pretty;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+}

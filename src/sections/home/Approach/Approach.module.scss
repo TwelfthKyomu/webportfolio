@@ -1,0 +1,71 @@
+@use '@/styles/mixins' as *;
+
+@keyframes text-fill {
+    to {
+        background-position: 0 0;
+    }
+}
+
+.approach {
+    background: var(--color-text);
+    color: var(--color-background);
+}
+
+.statement {
+    max-width: 21em;
+    font: 400 clamp(28px, 4.4vw, 68px) / 1.14 var(--font-display);
+    letter-spacing: -0.03em;
+    text-wrap: pretty;
+
+    @supports (animation-timeline: view()) {
+        span {
+            -webkit-text-fill-color: transparent;
+            background: linear-gradient(
+                    90deg,
+                    var(--color-background) 50%,
+                    color-mix(in oklab, var(--color-background) 22%, transparent) 50%
+                )
+                100% 0 / 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            @include scroll-animation(text-fill, entry 60% cover 62%);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        span {
+            background: none;
+            -webkit-text-fill-color: currentColor;
+        }
+    }
+}
+
+.principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    gap: 36px clamp(24px, 3vw, 48px);
+    margin-top: clamp(56px, 7vw, 100px);
+    padding-top: 32px;
+    border-top: 1px solid color-mix(in oklab, var(--color-background) 22%, transparent);
+}
+
+.principle {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    span {
+        font: 500 12px/1 var(--font-mono);
+        color: var(--color-text-inverted-muted);
+    }
+
+    h3 {
+        font: 600 22px/1.15 var(--font-display);
+        letter-spacing: -0.02em;
+    }
+
+    p {
+        max-width: 34ch;
+        color: var(--color-text-inverted-muted);
+    }
+}

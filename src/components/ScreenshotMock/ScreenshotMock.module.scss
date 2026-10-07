@@ -1,0 +1,11 @@
+.label {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    padding: 6px 8px;
+    border-radius: 3px;
+    background: color-mix(in oklab, currentColor 14%, transparent);
+    font: 500 10px/1 var(--font-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}

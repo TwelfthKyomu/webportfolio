@@ -1,0 +1,40 @@
+@use '@/styles/mixins' as *;
+
+@include keyframes(word-in);
+
+.core {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.12em 0.42em;
+    font: 400 clamp(28px, 5.6vw, 88px) / 1.08 var(--font-display);
+    letter-spacing: -0.035em;
+    @include scroll-stretch;
+
+    li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.42em;
+        @include scroll-animation(word-in);
+
+        &:not(:last-child)::after {
+            content: '/';
+            font-weight: 300;
+            color: var(--color-accent);
+        }
+    }
+}
+
+.groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+    gap: 32px clamp(24px, 3vw, 48px);
+    margin-top: clamp(48px, 6vw, 88px);
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+}
+
+.note {
+    margin: clamp(40px, 5vw, 64px) 0 0;
+    font: 400 12px/1.6 var(--font-mono);
+    color: var(--color-text-muted);
+}

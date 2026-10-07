@@ -1,0 +1,59 @@
+$track-height: min(38vh, 300px);
+
+@keyframes scroll-progress {
+    to {
+        translate: 0 $track-height;
+    }
+}
+
+.rail {
+    position: fixed;
+    right: clamp(8px, 1.1vw, 18px);
+    top: 50%;
+    z-index: 25;
+    translate: 0 -50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 6px;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-background) 82%, transparent);
+    font: 500 9px/1 var(--font-mono);
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    pointer-events: none;
+
+    @media (max-width: 700px) {
+        display: none;
+    }
+}
+
+.track {
+    position: relative;
+    width: 9px;
+    height: $track-height;
+    background:
+        repeating-linear-gradient(
+                color-mix(in oklab, var(--color-text) 45%, transparent) 0 1px,
+                transparent 1px 8px
+            )
+            0 0 / 5px 100% no-repeat,
+        repeating-linear-gradient(
+                color-mix(in oklab, var(--color-text) 85%, transparent) 0 1px,
+                transparent 1px 40px
+            )
+            0 0 / 9px 100% no-repeat;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -4px;
+        width: 17px;
+        height: 2px;
+        background: var(--color-accent);
+        animation: scroll-progress linear both;
+        animation-timeline: scroll(root);
+    }
+}

@@ -1,0 +1,41 @@
+@use '@/styles/mixins' as *;
+
+.button {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+
+    &:hover {
+        border-color: var(--color-text);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 3px;
+    }
+
+    svg {
+        transition: rotate 0.7s var(--ease);
+
+        @include dark-theme {
+            rotate: 180deg;
+        }
+    }
+
+    circle {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.6;
+    }
+
+    path {
+        fill: currentColor;
+    }
+}

@@ -1,0 +1,116 @@
+@use '@/styles/mixins' as *;
+
+.work {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 24px 40px;
+    align-items: start;
+    padding: 56px 0;
+    border-top: 1px solid var(--color-text);
+
+    &:last-of-type {
+        border-bottom: 1px solid var(--color-text);
+    }
+
+    &:nth-of-type(even) {
+        grid-template-columns: minmax(0, 1.35fr) 64px minmax(0, 1fr);
+
+        .screenshot {
+            order: -1;
+        }
+    }
+
+    &:hover {
+        .title {
+            color: var(--color-accent);
+        }
+
+        .screenshot > :first-child {
+            scale: 1.035;
+        }
+    }
+
+    @media (max-width: 900px) {
+        &,
+        &:nth-of-type(even) {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 20px;
+            padding: 40px 0;
+        }
+
+        &:nth-of-type(even) .screenshot {
+            order: 0;
+        }
+    }
+}
+
+.screenshot > :first-child {
+    transition: scale 0.9s var(--ease);
+}
+
+.number {
+    padding-top: 10px;
+    font: 500 13px/1 var(--font-mono);
+
+    @media (max-width: 900px) {
+        padding-top: 0;
+    }
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+.title {
+    font: 600 clamp(26px, 2.6vw, 40px) / 1.08 var(--font-display);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    transition: color 0.35s;
+}
+
+.description {
+    max-width: 44ch;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+}
+
+.stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    li {
+        padding: 8px 11px;
+        border: 1px solid var(--color-border);
+        border-radius: 999px;
+        font: 500 11px/1 var(--font-mono);
+    }
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+}
+
+.meta {
+    display: flex;
+    gap: 36px;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    dt {
+        @include caption;
+    }
+
+    dd {
+        font: 500 15px/1.2 var(--font-body);
+    }
+}
