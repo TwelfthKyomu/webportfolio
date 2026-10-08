@@ -11,7 +11,7 @@ const csp = [
 
 const nextConfig: NextConfig = {
     poweredByHeader: false,
-    images: { formats: ['image/avif', 'image/webp'] },
+    images: { formats: ['image/webp'] },
     headers: async () => [
         {
             source: '/(.*)',

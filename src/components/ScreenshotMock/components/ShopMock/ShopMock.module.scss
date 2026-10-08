@@ -1,0 +1,83 @@
+.shop {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1.2vw, 16px);
+    min-width: 0;
+    min-height: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1.2vw, 16px);
+    padding: clamp(6px, 0.8vw, 10px) clamp(8px, 1vw, 14px);
+    border-radius: clamp(6px, 0.8vw, 10px);
+    background: #1e2024;
+}
+
+.logo {
+    width: 16%;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--color-accent);
+}
+
+.search {
+    flex: 1;
+    height: clamp(10px, 1.4vw, 18px);
+    border-radius: 999px;
+    background: #2a2d32;
+}
+
+.cart {
+    width: clamp(10px, 1.4vw, 18px);
+    aspect-ratio: 1;
+    border-radius: 4px;
+    background: #ecedea;
+}
+
+.grid {
+    flex: 1;
+    display: grid;
+    grid-template: repeat(2, minmax(0, 1fr)) / repeat(3, minmax(0, 1fr));
+    gap: clamp(8px, 1.2vw, 16px);
+    min-height: 0;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(5px, 0.6vw, 8px);
+    min-height: 0;
+    padding: clamp(5px, 0.6vw, 8px);
+    border-radius: clamp(6px, 0.8vw, 10px);
+    background: #1e2024;
+}
+
+.photo {
+    flex: 1;
+    border-radius: clamp(4px, 0.5vw, 6px);
+    background: #2a2d32;
+}
+
+.accent {
+    background: var(--color-accent);
+}
+
+.lines {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    span {
+        height: 4px;
+
+        &:first-child {
+            width: 70%;
+        }
+
+        &:last-child {
+            width: 35%;
+        }
+    }
+}

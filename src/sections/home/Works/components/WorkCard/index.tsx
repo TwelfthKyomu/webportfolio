@@ -1,7 +1,9 @@
 import type { FC } from 'react';
 
 import { ArrowLink } from '@/components/ArrowLink';
+import { DemoAccess } from '@/components/DemoAccess';
 import { Screenshot } from '@/components/Screenshot';
+import { PROJECT_KIND_LABELS } from '@/constants/projectKinds';
 import { toTwoDigits } from '@/lib/format';
 import { getProjectLinks, type Project } from '@/lib/projects';
 
@@ -20,6 +22,7 @@ export const WorkCard: FC<PropsT> = (props) => {
         <article className={styles.work}>
             <span className={styles.number}>{toTwoDigits(number)}</span>
             <div className={styles.body}>
+                <span className={styles.kind}>{PROJECT_KIND_LABELS[project.kind]}</span>
                 <h3 className={styles.title}>{project.title}</h3>
                 <p className={styles.description}>{project.summary}</p>
                 <ul className={styles.stack}>
@@ -51,6 +54,7 @@ export const WorkCard: FC<PropsT> = (props) => {
                         ))}
                     </div>
                 )}
+                {project.demo && <DemoAccess demo={project.demo} />}
             </div>
             <Screenshot
                 screen={project.cover}

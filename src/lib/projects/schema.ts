@@ -1,6 +1,7 @@
 import * as z from 'zod';
 
 import { MOCK_NAMES } from '@/constants/mocks';
+import { PROJECT_KINDS } from '@/constants/projectKinds';
 
 export const screenSchema = z.union([
     z.enum(MOCK_NAMES).transform((name) => ({ type: 'mock' as const, name })),
@@ -25,11 +26,14 @@ export const caseStudySchema = z.object({
 export const projectSchema = z.object({
     order: z.number(),
     title: z.string(),
+    kind: z.enum(PROJECT_KINDS),
     summary: z.string(),
     stack: z.array(z.string()),
     role: z.string(),
     year: z.string(),
     cover: screenSchema,
     url: z.url().optional(),
+    urlLabel: z.string().optional(),
+    demo: z.object({ login: z.string(), password: z.string() }).optional(),
     case: caseStudySchema.optional(),
 });

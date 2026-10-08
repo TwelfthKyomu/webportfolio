@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 
 import { ArrowLink } from '@/components/ArrowLink';
+import { DemoAccess } from '@/components/DemoAccess';
+import { PROJECT_KIND_LABELS } from '@/constants/projectKinds';
 import { toTwoDigits } from '@/lib/format';
 import { type CaseStudy, getSiteLink, type Project } from '@/lib/projects';
 
@@ -21,6 +23,7 @@ export const CaseHero: FC<PropsT> = (props) => {
         <section className={clsx('container', styles.hero)}>
             <p className={styles.kicker}>
                 <span>Кейс {toTwoDigits(number)}</span>
+                <span>{PROJECT_KIND_LABELS[project.kind]}</span>
                 <span>{project.role}</span>
                 <span>{caseStudy.period}</span>
             </p>
@@ -37,6 +40,7 @@ export const CaseHero: FC<PropsT> = (props) => {
                             {siteLink.label}
                         </ArrowLink>
                     )}
+                    {project.demo && <DemoAccess demo={project.demo} />}
                 </div>
                 <dl className={styles.facts}>
                     <div>

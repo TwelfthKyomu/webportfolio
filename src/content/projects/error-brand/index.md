@@ -1,6 +1,7 @@
 ---
 order: 4
 title: Интернет-магазин errorBrand
+kind: personal
 summary: 'Магазин бренда минималистичной одежды: каталог, корзина, личный кабинет и лукбук. Товары и покупатели хранятся в моей админ-панели.'
 stack: [TypeScript, Next.js, React, Sass, React Hook Form, Zod]
 role: Frontend

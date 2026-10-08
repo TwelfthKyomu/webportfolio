@@ -1,12 +1,15 @@
 ---
 order: 4
 title: '[Название проекта]'
+kind: personal # commercial — для заказчика, personal — свой проект
 summary: '[Одна-две фразы: что это за продукт и какую задачу он решает.]'
 stack: ['[технология]', '[технология]']
 role: '[Роль: Frontend, Fullstack…]'
 year: '[2026]'
 cover: /projects/my-app/cover.png
 url: https://example.com # необязательно: сайт, где проект можно попробовать; без поля кнопки не будет
+urlLabel: Открыть сайт # необязательно: подпись кнопки, по умолчанию «Попробовать»
+demo: { login: 'guest@example.com', password: '[пароль]' } # необязательно: гостевой вход
 case:
     period: '[2025 — 2026]'
     team: '[Состав команды]'

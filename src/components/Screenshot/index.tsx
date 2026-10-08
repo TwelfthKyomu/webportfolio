@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import Image from 'next/image';
 import type { FC } from 'react';
 
 import { ScreenshotMock } from '@/components/ScreenshotMock';
 import type { Screen } from '@/lib/projects';
 
+import { ScreenshotImage } from './components/ScreenshotImage';
 import styles from './Screenshot.module.scss';
 
 type PropsT = {
@@ -35,12 +35,10 @@ export const Screenshot: FC<PropsT> = (props) => {
                     fullWidth={fullWidth}
                 />
             ) : (
-                <Image
-                    className={styles.image}
+                <ScreenshotImage
                     src={screen.src}
                     alt={alt}
-                    fill
-                    sizes="(max-width: 900px) 100vw, 60vw"
+                    sizes={fullWidth ? '100vw' : '(max-width: 900px) 100vw, 60vw'}
                 />
             )}
         </div>

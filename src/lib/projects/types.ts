@@ -10,6 +10,8 @@ export type Project = z.output<typeof projectSchema> & {
     slug: string;
 };
 
+export type DemoAccess = NonNullable<Project['demo']>;
+
 export type ProjectLink = {
     href: string;
     label: string;

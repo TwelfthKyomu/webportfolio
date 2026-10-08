@@ -1,6 +1,7 @@
 ---
 order: 1
 title: Flowsy — админ-панель для бизнеса
+kind: personal
 summary: 'Одна система, в которой команда ведёт заказы и записи, каталог, склад, смены сотрудников и оплату. Делаю её сам — от базы данных до интерфейса.'
 stack:
     [
@@ -22,6 +23,8 @@ stack:
 role: Fullstack
 year: '2026'
 cover: /projects/admin/schedule.png
+url: https://admin.kyomu.tech
+demo: { login: 'guest@example.com', password: 'flowsy-demo' }
 case:
     period: '2026 — сейчас'
     team: Один, от базы до интерфейса

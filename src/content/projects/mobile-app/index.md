@@ -1,6 +1,7 @@
 ---
 order: 3
 title: Мобильное приложение для Flowsy
+kind: personal
 summary: 'В разработке. Flowsy в телефоне: сотрудники видят свои смены и записи клиентов и переписываются с командой.'
 stack: [React Native, TypeScript]
 role: Mobile
