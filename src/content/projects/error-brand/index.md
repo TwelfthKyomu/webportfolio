@@ -7,6 +7,7 @@ stack: [TypeScript, Next.js, React, Sass, React Hook Form, Zod]
 role: Frontend
 year: '2026'
 cover: /projects/error-brand/cover.png
+url: https://brand.kyomu.tech
 case:
     period: '2026'
     team: Один
