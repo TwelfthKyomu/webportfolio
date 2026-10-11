@@ -10,15 +10,9 @@ export function getCursorHeat(box: DOMRect, cursor: Cursor, radius: number) {
     return proximity * proximity * (3 - 2 * proximity);
 }
 
-export function getIntroHeat(
-    index: number,
-    time: number,
-    introDelay: number,
-    cursorActive: boolean
-) {
+export function getIntroHeat(index: number, time: number, introDelay: number) {
     const wavePeak = introDelay + 1.35 + index * 0.13;
     const wave = Math.exp(-(((time - wavePeak) / 0.24) ** 2));
-    const breath = cursorActive ? 0 : 0.06 + 0.15 * (1 + Math.sin(time * 1.15 - index * 0.85));
 
-    return Math.max(wave, breath);
+    return wave;
 }

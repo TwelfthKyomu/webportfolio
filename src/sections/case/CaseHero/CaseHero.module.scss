@@ -48,7 +48,6 @@
     letter-spacing: -0.045em;
     text-wrap: balance;
     animation: title-inflate 1.8s var(--ease) both;
-    @include scroll-stretch;
 }
 
 .intro {

@@ -15,9 +15,6 @@ export function createLiveTypeState(): LiveTypeState {
         cursor: { x: 0, y: 0, active: false },
         liveItems: collectLiveItems(reducedMotion),
         visibleItems: new Set(),
-        lastScrollY: scrollY,
-        scrollVelocity: 0,
-        scrollStretch: '1.000',
         frameId: 0,
     };
 }

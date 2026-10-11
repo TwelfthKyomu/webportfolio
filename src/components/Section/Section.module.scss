@@ -36,7 +36,6 @@
 .title {
     font: 500 clamp(44px, 7vw, 112px) / 0.92 var(--font-display);
     letter-spacing: -0.045em;
-    @include scroll-stretch;
     @include scroll-animation(title-in);
 }
 

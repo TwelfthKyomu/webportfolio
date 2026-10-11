@@ -22,12 +22,4 @@ export const WEIGHT_EASING = 0.16;
 
 export const REDUCED_MOTION_EASING = 0.5;
 
-export const SCROLL_SMOOTHING = 0.86;
-
-export const SCROLL_SPEED_LIMIT = 38;
-
-export const SCROLL_HEAT = 0.8;
-
-export const MAX_SCROLL_STRETCH = 0.14;
-
 export const VISIBILITY_MARGIN = '80px 0px';

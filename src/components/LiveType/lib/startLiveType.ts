@@ -2,7 +2,6 @@ import { VISIBILITY_MARGIN } from '../constants';
 
 import { hideCursor, moveCursor, releaseCursor } from './cursor';
 import { updateVisibleItems } from './items';
-import { requestRender } from './render';
 import { createLiveTypeState } from './state';
 
 export function startLiveType() {
@@ -19,7 +18,6 @@ export function startLiveType() {
         passive: true,
         signal,
     });
-    addEventListener('scroll', () => requestRender(state), { passive: true, signal });
     state.root.addEventListener('pointerleave', () => hideCursor(state), { signal });
 
     return () => {

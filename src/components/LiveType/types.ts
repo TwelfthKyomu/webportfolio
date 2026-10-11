@@ -29,8 +29,5 @@ export type LiveTypeState = {
     cursor: Cursor;
     liveItems: Map<Element, LiveItem>;
     visibleItems: Set<LiveItem>;
-    lastScrollY: number;
-    scrollVelocity: number;
-    scrollStretch: string;
     frameId: number;
 };

@@ -9,7 +9,6 @@
 .callToAction {
     font: 300 clamp(48px, 11.5vw, 200px) / 0.92 var(--font-display);
     letter-spacing: -0.05em;
-    @include scroll-stretch;
     @include scroll-animation(word-in, entry 0% cover 40%);
 }
 

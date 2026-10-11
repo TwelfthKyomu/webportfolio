@@ -28,7 +28,6 @@
     margin-top: 18px;
     font: 300 clamp(48px, 10vw, 180px) / 0.9 var(--font-display);
     letter-spacing: -0.05em;
-    @include scroll-stretch;
 
     svg {
         width: clamp(40px, 7vw, 120px);
