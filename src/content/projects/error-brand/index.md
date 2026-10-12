@@ -6,7 +6,7 @@ summary: 'Магазин уличного бренда ERROR: вещи вися�
 stack: [TypeScript, Next.js, React, Sass, React Hook Form]
 role: Frontend
 year: '2026'
-cover: /projects/error-brand/cover.png
+cover: /projects/error-brand/wall.png
 url: https://brand.kyomu.tech
 case:
     period: '2026'
